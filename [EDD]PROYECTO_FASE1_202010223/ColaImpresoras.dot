@@ -1,0 +1,160 @@
+digraph G{
+label="COLA IMPRESORAS";
+labelloc = "t"
+node [shape=box,color=dodgerblue1];
+impresora2018699554[label="Impresora a Color", width=1.5,height=1.5,style=filled];
+imagen1128032093[label="imgColor", width=1.5,height=1.5];
+imagen1066516207[label="imgColor", width=1.5,height=1.5];
+imagen443308702[label="imgColor", width=1.5,height=1.5];
+imagen935044096[label="imgColor", width=1.5,height=1.5];
+imagen396180261[label="imgColor", width=1.5,height=1.5];
+imagen625576447[label="imgColor", width=1.5,height=1.5];
+imagen1560911714[label="imgColor", width=1.5,height=1.5];
+imagen939047783[label="imgColor", width=1.5,height=1.5];
+imagen1237514926[label="imgColor", width=1.5,height=1.5];
+imagen548246552[label="imgColor", width=1.5,height=1.5];
+imagen835648992[label="imgColor", width=1.5,height=1.5];
+imagen1134517053[label="imgColor", width=1.5,height=1.5];
+imagen492228202[label="imgColor", width=1.5,height=1.5];
+imagen1368884364[label="imgColor", width=1.5,height=1.5];
+imagen401625763[label="imgColor", width=1.5,height=1.5];
+imagen772777427[label="imgColor", width=1.5,height=1.5];
+imagen83954662[label="imgColor", width=1.5,height=1.5];
+imagen1751075886[label="imgColor", width=1.5,height=1.5];
+imagen2108649164[label="imgColor", width=1.5,height=1.5];
+imagen777874839[label="imgColor", width=1.5,height=1.5];
+imagen596512129[label="imgColor", width=1.5,height=1.5];
+imagen824318946[label="imgColor", width=1.5,height=1.5];
+imagen930990596[label="imgColor", width=1.5,height=1.5];
+imagen1921595561[label="imgColor", width=1.5,height=1.5];
+imagen565760380[label="imgColor", width=1.5,height=1.5];
+imagen6566818[label="imgColor", width=1.5,height=1.5];
+impresora1311053135[label="Impresora Blanco y Negro", width=1.5,height=1.5,style=filled];
+imagen1494279232[label="imgBW", width=1.5,height=1.5];
+imagen1650967483[label="imgBW", width=1.5,height=1.5];
+imagen87285178[label="imgBW", width=1.5,height=1.5];
+imagen610998173[label="imgBW", width=1.5,height=1.5];
+imagen2047329716[label="imgBW", width=1.5,height=1.5];
+imagen648129364[label="imgBW", width=1.5,height=1.5];
+imagen1029991479[label="imgBW", width=1.5,height=1.5];
+imagen1104106489[label="imgBW", width=1.5,height=1.5];
+imagen94438417[label="imgBW", width=1.5,height=1.5];
+imagen787604730[label="imgBW", width=1.5,height=1.5];
+imagen812265671[label="imgBW", width=1.5,height=1.5];
+imagen193064360[label="imgBW", width=1.5,height=1.5];
+{rank=same
+impresora2018699554->imagen1128032093[dir="none"];
+}
+{rank=same
+imagen1128032093->imagen1066516207[dir="none"];
+}
+{rank=same
+imagen1066516207->imagen443308702[dir="none"];
+}
+{rank=same
+imagen443308702->imagen935044096[dir="none"];
+}
+{rank=same
+imagen935044096->imagen396180261[dir="none"];
+}
+{rank=same
+imagen396180261->imagen625576447[dir="none"];
+}
+{rank=same
+imagen625576447->imagen1560911714[dir="none"];
+}
+{rank=same
+imagen1560911714->imagen939047783[dir="none"];
+}
+{rank=same
+imagen939047783->imagen1237514926[dir="none"];
+}
+{rank=same
+imagen1237514926->imagen548246552[dir="none"];
+}
+{rank=same
+imagen548246552->imagen835648992[dir="none"];
+}
+{rank=same
+imagen835648992->imagen1134517053[dir="none"];
+}
+{rank=same
+imagen1134517053->imagen492228202[dir="none"];
+}
+{rank=same
+imagen492228202->imagen1368884364[dir="none"];
+}
+{rank=same
+imagen1368884364->imagen401625763[dir="none"];
+}
+{rank=same
+imagen401625763->imagen772777427[dir="none"];
+}
+{rank=same
+imagen772777427->imagen83954662[dir="none"];
+}
+{rank=same
+imagen83954662->imagen1751075886[dir="none"];
+}
+{rank=same
+imagen1751075886->imagen2108649164[dir="none"];
+}
+{rank=same
+imagen2108649164->imagen777874839[dir="none"];
+}
+{rank=same
+imagen777874839->imagen596512129[dir="none"];
+}
+{rank=same
+imagen596512129->imagen824318946[dir="none"];
+}
+{rank=same
+imagen824318946->imagen930990596[dir="none"];
+}
+{rank=same
+imagen930990596->imagen1921595561[dir="none"];
+}
+{rank=same
+imagen1921595561->imagen565760380[dir="none"];
+}
+{rank=same
+imagen565760380->imagen6566818[dir="none"];
+}
+{rank=same
+impresora1311053135->imagen1494279232[dir="none"];
+}
+{rank=same
+imagen1494279232->imagen1650967483[dir="none"];
+}
+{rank=same
+imagen1650967483->imagen87285178[dir="none"];
+}
+{rank=same
+imagen87285178->imagen610998173[dir="none"];
+}
+{rank=same
+imagen610998173->imagen2047329716[dir="none"];
+}
+{rank=same
+imagen2047329716->imagen648129364[dir="none"];
+}
+{rank=same
+imagen648129364->imagen1029991479[dir="none"];
+}
+{rank=same
+imagen1029991479->imagen1104106489[dir="none"];
+}
+{rank=same
+imagen1104106489->imagen94438417[dir="none"];
+}
+{rank=same
+imagen94438417->imagen787604730[dir="none"];
+}
+{rank=same
+imagen787604730->imagen812265671[dir="none"];
+}
+{rank=same
+imagen812265671->imagen193064360[dir="none"];
+}
+impresora2018699554->impresora1311053135[style=invis];
+}

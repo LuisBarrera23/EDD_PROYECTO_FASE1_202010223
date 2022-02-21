@@ -1,0 +1,6 @@
+digraph G{
+label="TOP CLIENTES CON MAYOR IMAGENES A COLOR";
+labelloc = "t"
+node [shape=BOX,color=dodgerblue1];
+
+}

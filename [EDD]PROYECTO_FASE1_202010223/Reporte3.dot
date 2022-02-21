@@ -1,0 +1,6 @@
+digraph G{
+label="CLIENTE CON MAS PASOS EN EL SISTEMA";
+labelloc = "t"
+node [shape=Mcircle,color=dodgerblue1];
+
+}

@@ -1,0 +1,122 @@
+digraph G{
+label="LISTA CLIENTES EN ESPERA";
+labelloc = "t"
+node [shape=box,color=dodgerblue1];
+cliente1580066828[label="Martin Velasquez\nID: 8", width=1.5,height=1.5];
+imagen1421795058[label="imgColor", width=1.5,height=1.5];
+imagen1555009629[label="imgColor", width=1.5,height=1.5];
+cliente1627674070[label="Luis Reyes\nID: 5", width=1.5,height=1.5];
+imagen41359092[label="imgBW", width=1.5,height=1.5];
+imagen149928006[label="imgBW", width=1.5,height=1.5];
+cliente644117698[label="Alvaro Barrera\nID: 10", width=1.5,height=1.5];
+imagen713338599[label="imgBW", width=1.5,height=1.5];
+cliente1872034366[label="Angel Martinez\nID: 11", width=1.5,height=1.5];
+cliente1670675563[label="Enzo Pereira\nID: 14", width=1.5,height=1.5];
+cliente225534817[label="David Reyes\nID: 18", width=1.5,height=1.5];
+cliente1878246837[label="Pedro Lopez\nID: 19", width=1.5,height=1.5];
+cliente1725154839[label="David Juarez\nID: 13", width=1.5,height=1.5];
+imagen168423058[label="imgBW", width=1.5,height=1.5];
+cliente1259475182[label="Leo Gomez\nID: 21", width=1.5,height=1.5];
+cliente723074861[label="David Rodriguez\nID: 15", width=1.5,height=1.5];
+imagen821270929[label="imgBW", width=1.5,height=1.5];
+cliente929338653[label="Adrian Lopez\nID: 20", width=1.5,height=1.5];
+cliente1229416514[label="Lucas Garcia\nID: 26", width=1.5,height=1.5];
+imagen1160460865[label="imgBW", width=1.5,height=1.5];
+cliente1020371697[label="Enzo Reyes\nID: 23", width=1.5,height=1.5];
+cliente666988784[label="Alejandro Reyes\nID: 28", width=1.5,height=1.5];
+cliente1950409828[label="Martin Pereira\nID: 25", width=1.5,height=1.5];
+cliente2016447921[label="Adrian Pereira\nID: 27", width=1.5,height=1.5];
+cliente1510467688[label="Lucas Martinez\nID: 31", width=1.5,height=1.5];
+cliente640070680[label="Martin Velasquez\nID: 30", width=1.5,height=1.5];
+cliente1995265320[label="Angel de Leon\nID: 32", width=1.5,height=1.5];
+cliente1414644648[label="Manuel Barrera\nID: 29", width=1.5,height=1.5];
+cliente1072591677[label="Luis Rodriguez\nID: 34", width=1.5,height=1.5];
+cliente1523554304[label="Mario Morales\nID: 35", width=1.5,height=1.5];
+cliente1175962212[label="Mateo Martinez\nID: 36", width=1.5,height=1.5];
+cliente918221580[label="Pedro Reyes\nID: 37", width=1.5,height=1.5];
+cliente2055281021[label="Mateo Gomez\nID: 38", width=1.5,height=1.5];
+{rank=same
+cliente1580066828->cliente1627674070[dir="both"]
+}
+cliente1580066828->imagen1421795058;
+imagen1421795058->imagen1555009629;
+{rank=same
+cliente1627674070->cliente644117698[dir="both"]
+}
+cliente1627674070->imagen41359092;
+imagen41359092->imagen149928006;
+{rank=same
+cliente644117698->cliente1872034366[dir="both"]
+}
+cliente644117698->imagen713338599;
+{rank=same
+cliente1872034366->cliente1670675563[dir="both"]
+}
+{rank=same
+cliente1670675563->cliente225534817[dir="both"]
+}
+{rank=same
+cliente225534817->cliente1878246837[dir="both"]
+}
+{rank=same
+cliente1878246837->cliente1725154839[dir="both"]
+}
+{rank=same
+cliente1725154839->cliente1259475182[dir="both"]
+}
+cliente1725154839->imagen168423058;
+{rank=same
+cliente1259475182->cliente723074861[dir="both"]
+}
+{rank=same
+cliente723074861->cliente929338653[dir="both"]
+}
+cliente723074861->imagen821270929;
+{rank=same
+cliente929338653->cliente1229416514[dir="both"]
+}
+{rank=same
+cliente1229416514->cliente1020371697[dir="both"]
+}
+cliente1229416514->imagen1160460865;
+{rank=same
+cliente1020371697->cliente666988784[dir="both"]
+}
+{rank=same
+cliente666988784->cliente1950409828[dir="both"]
+}
+{rank=same
+cliente1950409828->cliente2016447921[dir="both"]
+}
+{rank=same
+cliente2016447921->cliente1510467688[dir="both"]
+}
+{rank=same
+cliente1510467688->cliente640070680[dir="both"]
+}
+{rank=same
+cliente640070680->cliente1995265320[dir="both"]
+}
+{rank=same
+cliente1995265320->cliente1414644648[dir="both"]
+}
+{rank=same
+cliente1414644648->cliente1072591677[dir="both"]
+}
+{rank=same
+cliente1072591677->cliente1523554304[dir="both"]
+}
+{rank=same
+cliente1523554304->cliente1175962212[dir="both"]
+}
+{rank=same
+cliente1175962212->cliente918221580[dir="both"]
+}
+{rank=same
+cliente918221580->cliente2055281021[dir="both"]
+}
+{rank=same
+cliente2055281021->cliente1580066828[dir="both"]
+}
+
+}

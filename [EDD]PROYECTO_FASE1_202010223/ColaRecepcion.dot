@@ -1,0 +1,8 @@
+digraph G{
+label="COLA RECEPCIÓN";
+labelloc = "t"
+node [shape=Mcircle,color=dodgerblue1];
+cliente205797316[label="Eduardo Barrera\nID: 56\nIMG_Color: 2\nIMG_BW: 1", width=1.5,height=1.5];
+{rank=same
+}
+}

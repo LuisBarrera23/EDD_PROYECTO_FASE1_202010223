@@ -1,0 +1,75 @@
+digraph G{
+label="LISTA VENTANILLAS";
+labelloc = "t"
+node [shape=box,color=dodgerblue1];
+ventanilla1072408673[label="Ventanilla1", width=1.5,height=1.5];
+cliente205797316[label="Eduardo Barrera\nID: 56\nIMG_Color: 2\nIMG_BW: 1", width=1.5,height=1.5];
+ventanilla1531448569[label="Ventanilla2", width=1.5,height=1.5];
+cliente1267032364[label="Angel Hernandez\nID: 57\nIMG_Color: 0\nIMG_BW: 1", width=1.5,height=1.5];
+ventanilla1867083167[label="Ventanilla3", width=1.5,height=1.5];
+cliente521645586[label="Enzo Gomez\nID: 52\nIMG_Color: 0\nIMG_BW: 0", width=1.5,height=1.5];
+imagen96639997[label="imgBW", width=1.5,height=1.5];
+imagen1558600329[label="imgColor", width=1.5,height=1.5];
+ventanilla1915910607[label="Ventanilla4", width=1.5,height=1.5];
+cliente661672156[label="Daniel Velasquez\nID: 58\nIMG_Color: 2\nIMG_BW: 2", width=1.5,height=1.5];
+ventanilla284720968[label="Ventanilla5", width=1.5,height=1.5];
+cliente1296064247[label="Mario Juarez\nID: 53\nIMG_Color: 0\nIMG_BW: 0", width=1.5,height=1.5];
+imagen128893786[label="imgColor", width=1.5,height=1.5];
+imagen1349277854[label="imgColor", width=1.5,height=1.5];
+ventanilla189568618[label="Ventanilla6", width=1.5,height=1.5];
+cliente1637070917[label="Lucas Castillo\nID: 54\nIMG_Color: 0\nIMG_BW: 0", width=1.5,height=1.5];
+imagen1732398722[label="imgBW", width=1.5,height=1.5];
+imagen1775282465[label="imgBW", width=1.5,height=1.5];
+ventanilla793589513[label="Ventanilla7", width=1.5,height=1.5];
+cliente806353501[label="Alvaro Barrera\nID: 51\nIMG_Color: 0\nIMG_BW: 0", width=1.5,height=1.5];
+imagen1108411398[label="imgBW", width=1.5,height=1.5];
+imagen1147985808[label="imgBW", width=1.5,height=1.5];
+imagen2040495657[label="imgColor", width=1.5,height=1.5];
+ventanilla1313922862[label="Ventanilla8", width=1.5,height=1.5];
+cliente780237624[label="Alvaro Diaz\nID: 55\nIMG_Color: 1\nIMG_BW: 2", width=1.5,height=1.5];
+imagen1394438858[label="imgColor", width=1.5,height=1.5];
+ventanilla495053715[label="Ventanilla9", width=1.5,height=1.5];
+cliente205797316->ventanilla1072408673[dir="none"];
+{rank=same
+ventanilla1072408673->ventanilla1531448569
+}
+cliente1267032364->ventanilla1531448569[dir="none"];
+{rank=same
+ventanilla1531448569->ventanilla1867083167
+}
+cliente521645586->ventanilla1867083167[dir="none"];
+{rank=same
+ventanilla1867083167->ventanilla1915910607
+}
+ventanilla1867083167->imagen96639997;
+imagen96639997->imagen1558600329;
+cliente661672156->ventanilla1915910607[dir="none"];
+{rank=same
+ventanilla1915910607->ventanilla284720968
+}
+cliente1296064247->ventanilla284720968[dir="none"];
+{rank=same
+ventanilla284720968->ventanilla189568618
+}
+ventanilla284720968->imagen128893786;
+imagen128893786->imagen1349277854;
+cliente1637070917->ventanilla189568618[dir="none"];
+{rank=same
+ventanilla189568618->ventanilla793589513
+}
+ventanilla189568618->imagen1732398722;
+imagen1732398722->imagen1775282465;
+cliente806353501->ventanilla793589513[dir="none"];
+{rank=same
+ventanilla793589513->ventanilla1313922862
+}
+ventanilla793589513->imagen1108411398;
+imagen1108411398->imagen1147985808;
+imagen1147985808->imagen2040495657;
+cliente780237624->ventanilla1313922862[dir="none"];
+{rank=same
+ventanilla1313922862->ventanilla495053715
+}
+ventanilla1313922862->imagen1394438858;
+
+}

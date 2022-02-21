@@ -1,0 +1,13 @@
+digraph G{
+label="TOP CLIENTES CON MENOR IMAGENES EN BLANCO Y NEGRO";
+labelloc = "t"
+node [shape=BOX,color=dodgerblue1];
+cliente1791741888[label="JUAN PEREZ\nID: 2\nIMG_Color: 3\nIMG_BW: 0\nPasos: 13\nVentanilla: 2", width=1.5,height=1.5];
+cliente189568618[label="Mateo Velasquez\nID: 6\nIMG_Color: 0\nIMG_BW: 1\nPasos: 8\nVentanilla: 3", width=1.5,height=1.5];
+cliente284720968[label="Mateo Ramirez\nID: 5\nIMG_Color: 0\nIMG_BW: 2\nPasos: 9\nVentanilla: 1", width=1.5,height=1.5];
+cliente2065951873[label="ANDRES LOPEZ\nID: 1\nIMG_Color: 3\nIMG_BW: 2\nPasos: 18\nVentanilla: 1", width=1.5,height=1.5];
+cliente1791741888->cliente189568618;
+cliente189568618->cliente284720968;
+cliente284720968->cliente2065951873;
+
+}
