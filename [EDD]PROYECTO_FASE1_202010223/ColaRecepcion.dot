@@ -2,7 +2,27 @@ digraph G{
 label="COLA RECEPCIÓN";
 labelloc = "t"
 node [shape=Mcircle,color=dodgerblue1];
-cliente205797316[label="Eduardo Barrera\nID: 56\nIMG_Color: 2\nIMG_BW: 1", width=1.5,height=1.5];
+cliente824909230[label="Hugo Garcia\nID: 19\nIMG_Color: 1\nIMG_BW: 2", width=1.5,height=1.5];
+cliente122883338[label="Angel Juarez\nID: 20\nIMG_Color: 0\nIMG_BW: 1", width=1.5,height=1.5];
+cliente666641942[label="Diego Barrera\nID: 21\nIMG_Color: 2\nIMG_BW: 0", width=1.5,height=1.5];
+cliente960604060[label="Luis Velasquez\nID: 22\nIMG_Color: 2\nIMG_BW: 0", width=1.5,height=1.5];
+cliente1349393271[label="Manuel Baran\nID: 23\nIMG_Color: 0\nIMG_BW: 1", width=1.5,height=1.5];
+cliente1338668845[label="Eduardo Barrera\nID: 24\nIMG_Color: 1\nIMG_BW: 2", width=1.5,height=1.5];
+cliente159413332[label="Angel Barrera\nID: 25\nIMG_Color: 1\nIMG_BW: 2", width=1.5,height=1.5];
+cliente1028214719[label="Mateo Velasquez\nID: 26\nIMG_Color: 2\nIMG_BW: 2", width=1.5,height=1.5];
+cliente500977346[label="Leo Lopez\nID: 27\nIMG_Color: 0\nIMG_BW: 2", width=1.5,height=1.5];
+cliente20132171[label="Mateo Velasquez\nID: 28\nIMG_Color: 2\nIMG_BW: 2", width=1.5,height=1.5];
+cliente186370029[label="Daniel Reyes\nID: 29\nIMG_Color: 0\nIMG_BW: 1", width=1.5,height=1.5];
 {rank=same
+cliente824909230->cliente122883338[dir="none"];
+cliente122883338->cliente666641942[dir="none"];
+cliente666641942->cliente960604060[dir="none"];
+cliente960604060->cliente1349393271[dir="none"];
+cliente1349393271->cliente1338668845[dir="none"];
+cliente1338668845->cliente159413332[dir="none"];
+cliente159413332->cliente1028214719[dir="none"];
+cliente1028214719->cliente500977346[dir="none"];
+cliente500977346->cliente20132171[dir="none"];
+cliente20132171->cliente186370029[dir="none"];
 }
 }

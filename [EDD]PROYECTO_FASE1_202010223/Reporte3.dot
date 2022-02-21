@@ -2,5 +2,6 @@ digraph G{
 label="CLIENTE CON MAS PASOS EN EL SISTEMA";
 labelloc = "t"
 node [shape=Mcircle,color=dodgerblue1];
+cliente2065951873[label="ANDRES LOPEZ\nID: 1\nIMG_Color: 3\nIMG_BW: 2\nPasos: 18\nVentanilla: 1", width=1.5,height=1.5];
 
 }
