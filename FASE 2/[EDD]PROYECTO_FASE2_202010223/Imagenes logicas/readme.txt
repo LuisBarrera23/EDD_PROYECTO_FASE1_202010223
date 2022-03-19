@@ -1,0 +1,1 @@
+aqui se generan las imagenes de forma logica de las matrices

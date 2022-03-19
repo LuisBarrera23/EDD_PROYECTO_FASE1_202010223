@@ -1,0 +1,1 @@
+aqui se generan los archivos dot de las imagenes de forma logica de las matrices 
