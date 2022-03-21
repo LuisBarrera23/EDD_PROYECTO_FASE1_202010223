@@ -61,9 +61,9 @@ public int Cfilas=0;
         while(actual!=null){
             NodoM actual2=actual;
             while(actual2!=null){
-                System.out.println(cor1+","+cor2+"    "+actual2.x+","+actual2.y);
+                //System.out.println(cor1+","+cor2+"    "+actual2.x+","+actual2.y);
                 if(actual2.x==cor1&&actual2.y==cor2){
-                    System.out.println("encontrado gg");
+                    //System.out.println("encontrado gg");
                     return actual2;
                 }
                 actual2=actual2.siguiente;
@@ -188,7 +188,7 @@ public int Cfilas=0;
                 }else if(actual2.y==-1){
                     nodos+="nodo"+actual2.hashCode()+"[label="+actual2.color+", style = filled, fillcolor = white,group="+actual2.x+"];\n";
                 }else{
-                    nodos+="nodo"+actual2.hashCode()+"[label=\"\""+", style = filled, fillcolor = "+actual2.color+",group="+actual2.x+"];\n";
+                    nodos+="nodo"+actual2.hashCode()+"[label=\"\""+", style = filled, fillcolor = \""+actual2.color+"\",group="+actual2.x+"];\n";
                 }
                 if(actual2.siguiente!=null){
                     estructura+="{rank=same "+"nodo"+actual2.hashCode()+"->"+"nodo"+actual2.siguiente.hashCode()+"[dir=both,arrowsize=0.5]}\n";
@@ -213,11 +213,11 @@ public int Cfilas=0;
         dot+=nodos+estructura+"}";
         //System.out.println(dot);
         try{
-            FileWriter f=new FileWriter("Imagenes logicas/Archivos dot/grafico.dot");
+            FileWriter f=new FileWriter("Imagenes logicas/Archivos dot/graficoCapa"+raiz.color+".dot");
             BufferedWriter bufer=new BufferedWriter(f);
             bufer.write(dot);
             bufer.close();
-            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","Imagenes logicas/Archivos dot/grafico.dot","-o","Imagenes logicas/"+raiz.color+".png");
+            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","Imagenes logicas/Archivos dot/graficoCapa"+raiz.color+".dot","-o","Imagenes logicas/"+raiz.color+".png");
             p.redirectErrorStream(true);
             p.start();
         }catch(Exception e){
@@ -234,7 +234,7 @@ public int Cfilas=0;
             NodoM actual2=actual;
             while(actual2!=null){
                 if(actual2.y==-1|actual2.x==-1){
-                    System.out.println("cabecera");
+                    //System.out.println("cabecera");
                 }else{
                     nodos+="nodo"+actual2.hashCode()+"[label=\"\""+", style = filled, fillcolor = "+actual2.color+",group="+actual2.x+"];\n";
                     if(actual2.siguiente!=null){
@@ -275,6 +275,42 @@ public int Cfilas=0;
         }catch(Exception e){
             System.out.println(e);
         }
+    }
+    
+    public void graficar_matriz2(){
+        String dot="digraph G{\nnode[shape=box width=1 height=1];\n";
+        String nodos="";
+        String estructura="";
+        NodoM actual=raiz;
+        
+        //doble while para ver el numero de cabeceras de columnas (ver max)
+        actual=raiz;
+        while(actual!=null){
+            NodoM actual2=actual;
+            while(actual2.siguiente!=null){
+                actual2=actual2.siguiente;
+            }
+            int columnas=actual2.x;
+            int filas=actual.y;
+            System.out.println(columnas);
+            for (int i = 0; i < columnas; i++) {
+                
+            }
+            actual=actual.abajo;
+        }
+        dot+=nodos+estructura+"}";
+        System.out.println(dot);
+//        try{
+//            FileWriter f=new FileWriter("Imagenes logicas/Archivos dot/grafico.dot");
+//            BufferedWriter bufer=new BufferedWriter(f);
+//            bufer.write(dot);
+//            bufer.close();
+//            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","Imagenes logicas/Archivos dot/grafico.dot","-o","Imagenes logicas/"+raiz.color+".png");
+//            p.redirectErrorStream(true);
+//            p.start();
+//        }catch(Exception e){
+//            System.out.println(e);
+//        }
     }
 
 }

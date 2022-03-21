@@ -1,8 +1,0 @@
-digraph G{
-node[shape=box width=1 height=1];
-nodo1896277646[label="", style = filled, fillcolor = black,group=3];
-nodo2128227771[label="", style = filled, fillcolor = black,group=4];
-nodo1702297201[label="", style = filled, fillcolor = red,group=4];
-{rank=same nodo1896277646->nodo2128227771[style=invis]}
-nodo2128227771->nodo1702297201[style=invis]
-}

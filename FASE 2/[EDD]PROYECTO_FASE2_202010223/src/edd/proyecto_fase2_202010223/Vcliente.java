@@ -5,18 +5,25 @@
  */
 package edd.proyecto_fase2_202010223;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author angel
  */
-public class Cliente extends javax.swing.JFrame {
+public class Vcliente extends javax.swing.JFrame {
 
     /**
      * Creates new form Cliente
      */
-    public Cliente() {
+    public Vcliente() {
         initComponents();
     }
 
@@ -122,26 +129,74 @@ public class Cliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vcliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vcliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vcliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vcliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cliente().setVisible(true);
+                new Vcliente().setVisible(true);
             }
         });
     }
-    
-    public void carga_capas(){
-        System.out.println("hola");
+
+    public void carga_capas() {
+        JFileChooser jfc = new JFileChooser();
+        FileNameExtensionFilter imgFilter = new FileNameExtensionFilter("Archivos JSON", "json");
+        jfc.setFileFilter(imgFilter);
+        jfc.showOpenDialog(null);
+        File archivo = jfc.getSelectedFile();
+        //System.out.println(archivo); //imprime ruta absoluta
+
+        if (archivo != null) {
+            try {
+                BufferedReader obj = new BufferedReader(new FileReader(archivo));
+                String texto = "";
+                String contenido = "";
+                while ((texto = obj.readLine()) != null) {
+                    contenido += texto + "\n";
+                }
+                contenido=contenido.toUpperCase();
+                //System.out.println(contenido);
+                
+                
+                JsonParser parser = new JsonParser();
+                JsonArray arreglo = parser.parse(contenido).getAsJsonArray();
+                for (int i = 0; i < arreglo.size(); i++) {
+                    JsonObject objeto = arreglo.get(i).getAsJsonObject();
+                    int idcapa = objeto.get("ID_CAPA").getAsInt();
+                    JsonArray pixeles = objeto.get("PIXELES").getAsJsonArray();
+                    //System.out.println("capa"+idcapa);
+                    Matriz nueva=new Matriz("CAPA"+idcapa);
+                    for (int j = 0; j < pixeles.size(); j++) {
+                        JsonObject p=pixeles.get(j).getAsJsonObject();
+                        int y= p.get("FILA").getAsInt();
+                        int x= p.get("COLUMNA").getAsInt();
+                        String color= p.get("COLOR").getAsString();
+                        //System.out.println("coordenada x="+x+" y="+y+" color"+color);
+                        nueva.insertarNodo(x, y, color);
+                    }
+//                    if(idcapa==0){
+//                        nueva.graficardot_matriz();
+//                    }
+                    nueva.graficardot_matriz();
+                }
+                
+                
+            } catch (Exception e) {
+                System.out.println("Error en la lectura del archivo");
+                System.out.println(e);
+            }
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
