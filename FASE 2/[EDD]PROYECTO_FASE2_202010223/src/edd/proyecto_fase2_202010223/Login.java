@@ -87,6 +87,8 @@ public class Login extends javax.swing.JFrame {
         L_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/LOGIN.png"))); // NOI18N
         L_imagen.setPreferredSize(new java.awt.Dimension(100, 100));
 
+        EntradaContra.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -162,11 +164,16 @@ public class Login extends javax.swing.JFrame {
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
         // TODO add your handling code here:
         System.out.println("presiono registro");
+        registro r=new registro();
+        r.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_b2ActionPerformed
 
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
         // TODO add your handling code here:
         System.out.println("presiono inicio de sesion");
+        System.out.println(EntradaUsuario.getText());
+        System.out.println(EntradaContra.getText());
     }//GEN-LAST:event_b1ActionPerformed
 
     /**
