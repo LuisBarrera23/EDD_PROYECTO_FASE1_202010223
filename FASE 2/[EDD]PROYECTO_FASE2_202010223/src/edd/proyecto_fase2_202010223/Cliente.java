@@ -1,21 +1,21 @@
 package edd.proyecto_fase2_202010223;
 
 public class Cliente {
-    private String dpi;
+    private long dpi;
     private String nombre;
     private String password;
 
-    public Cliente(String dpi, String nombre, String password) {
+    public Cliente(long dpi, String nombre, String password) {
         this.dpi = dpi;
         this.nombre = nombre;
         this.password = password;
     }
 
-    public String getDpi() {
+    public long getDpi() {
         return dpi;
     }
 
-    public void setDpi(String dpi) {
+    public void setDpi(long dpi) {
         this.dpi = dpi;
     }
 

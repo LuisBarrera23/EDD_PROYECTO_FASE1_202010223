@@ -5,6 +5,8 @@
  */
 package edd.proyecto_fase2_202010223;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author angel
@@ -164,16 +166,41 @@ public class Login extends javax.swing.JFrame {
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
         // TODO add your handling code here:
         System.out.println("presiono registro");
-        registro r=new registro();
+        registro r = new registro();
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_b2ActionPerformed
 
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
         // TODO add your handling code here:
-        System.out.println("presiono inicio de sesion");
-        System.out.println(EntradaUsuario.getText());
-        System.out.println(EntradaContra.getText());
+        //System.out.println("presiono inicio de sesion");
+        if (EntradaUsuario.getText().isEmpty() | EntradaContra.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese todos los datos", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            String usuario = EntradaUsuario.getText();
+            String contra = EntradaContra.getText();
+            if ("admin".equals(usuario) && "EDD2022".equals(contra)) {
+                JOptionPane.showMessageDialog(this, "Administrador Logueado con exito", "Bienvenido ADMIN", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                try {
+                    long dpi = Long.parseLong(usuario);
+                    Cliente logueado = EDDPROYECTO_FASE2_202010223.clientes.logueo(dpi, contra);
+                    if (logueado == null) {
+                        JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Cliente Logueado con exito\n" + logueado.getNombre(), "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+                        Vcliente c = new Vcliente();
+                        c.cliente = logueado;
+                        c.setVisible(true);
+                        c.modificaciones();
+                        this.dispose();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "DPI solo debe tener numeros", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
     }//GEN-LAST:event_b1ActionPerformed
 
     /**

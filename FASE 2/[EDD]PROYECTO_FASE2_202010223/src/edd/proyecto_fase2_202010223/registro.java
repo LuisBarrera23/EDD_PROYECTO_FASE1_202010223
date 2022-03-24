@@ -5,6 +5,8 @@
  */
 package edd.proyecto_fase2_202010223;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author angel
@@ -160,16 +162,34 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_Entrada_dpiActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Login l=new Login();
+        Login l = new Login();
         l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String nombre=Entrada_nombre.getText();
-        String dpi=Entrada_dpi.getText();
-        String contraseña=Entrada_contra.getText();
+        if (Entrada_nombre.getText().isEmpty() | Entrada_contra.getText().isEmpty() | Entrada_dpi.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese todos los datos", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            String nombre = Entrada_nombre.getText();
+            String contraseña = Entrada_contra.getText();
+            String DPI=Entrada_dpi.getText();
+            try {
+                long dpi = Long.parseLong(DPI);
+                Cliente cliente=new Cliente(dpi,nombre,contraseña);
+                EDDPROYECTO_FASE2_202010223.clientes.insertar(cliente);
+                JOptionPane.showMessageDialog(this, "Registro realizado con exito", "Añadido", JOptionPane.INFORMATION_MESSAGE);
+                Login l=new Login();
+                l.setVisible(true);
+                this.dispose();
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "DPI solo debe tener numeros", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -17,7 +17,7 @@ public class ListaClientes {
         }
     }
     
-    public void eliminar(String dpi){
+    public void eliminar(int dpi){
         Nodocliente actual=primero;
         Nodocliente anterior=null;
         while(actual!=null&&actual.cliente.getDpi()!=dpi){
@@ -43,10 +43,10 @@ public class ListaClientes {
         }
     }
     
-    public Cliente logueo(String dpi,String contra){
+    public Cliente logueo(long dpi,String contra){
         Nodocliente actual=primero;
         while(actual!=null){
-            if(actual.cliente.getDpi()==dpi&&actual.cliente.getPassword()==contra){
+            if(actual.cliente.getDpi()==dpi&&actual.cliente.getPassword().equalsIgnoreCase(contra)){
                 return actual.cliente;
             }
             actual=actual.siguiente;
