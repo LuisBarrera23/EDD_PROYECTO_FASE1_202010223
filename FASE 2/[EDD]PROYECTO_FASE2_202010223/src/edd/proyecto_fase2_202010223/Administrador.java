@@ -78,7 +78,7 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(b1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 788, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 767, Short.MAX_VALUE)
                 .addComponent(b2)
                 .addContainerGap())
         );
@@ -95,6 +95,7 @@ public class Administrador extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
@@ -167,28 +168,17 @@ public class Administrador extends javax.swing.JFrame {
                 JsonArray arreglo = parser.parse(contenido).getAsJsonArray();
                 for (int i = 0; i < arreglo.size(); i++) {
                     JsonObject objeto = arreglo.get(i).getAsJsonObject();
-                    int idcapa = objeto.get("ID_CAPA").getAsInt();
-                    JsonArray pixeles = objeto.get("PIXELES").getAsJsonArray();
-                    //System.out.println("capa"+idcapa);
-                    Matriz nueva=new Matriz("CAPA"+idcapa);
-                    for (int j = 0; j < pixeles.size(); j++) {
-                        JsonObject p=pixeles.get(j).getAsJsonObject();
-                        int y= p.get("FILA").getAsInt();
-                        int x= p.get("COLUMNA").getAsInt();
-                        String color= p.get("COLOR").getAsString();
-                        //System.out.println("coordenada x="+x+" y="+y+" color"+color);
-                        nueva.insertarNodo(x, y, color);
-                    }
-//                    if(idcapa==0){
-//                        nueva.graficardot_matriz();
-//                    }
-                    nueva.graficardot_matriz();
+                    long dpi = objeto.get("DPI").getAsLong();
+                    String nombre=objeto.get("NOMBRE_CLIENTE").getAsString();
+                    String contra=objeto.get("PASSWORD").getAsString();
+                    Cliente nuevo=new Cliente(dpi,nombre,contra);
+                    System.out.println(nuevo.toString());
                 }
                 
                 
             } catch (Exception e) {
+                e.printStackTrace();
                 System.out.println("Error en la lectura del archivo");
-                System.out.println(e);
             }
         }
 

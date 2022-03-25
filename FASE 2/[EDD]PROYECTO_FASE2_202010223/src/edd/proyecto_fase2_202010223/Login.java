@@ -181,6 +181,9 @@ public class Login extends javax.swing.JFrame {
             String contra = EntradaContra.getText();
             if ("admin".equals(usuario) && "EDD2022".equals(contra)) {
                 JOptionPane.showMessageDialog(this, "Administrador Logueado con exito", "Bienvenido ADMIN", JOptionPane.INFORMATION_MESSAGE);
+                Administrador a = new Administrador();
+                a.setVisible(true);
+                this.dispose();
             } else {
                 try {
                     long dpi = Long.parseLong(usuario);
@@ -189,10 +192,10 @@ public class Login extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "ERROR", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(this, "Cliente Logueado con exito\n" + logueado.getNombre(), "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
-                        Vcliente c = new Vcliente();
-                        c.cliente = logueado;
+                        Vcliente c = new Vcliente(logueado);
+                        //c.cliente = logueado;
                         c.setVisible(true);
-                        c.modificaciones();
+                        //c.modificaciones();
                         this.dispose();
                     }
                 } catch (Exception e) {

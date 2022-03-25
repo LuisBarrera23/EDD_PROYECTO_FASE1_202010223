@@ -225,44 +225,43 @@ public int Cfilas=0;
         }
     }
     
-    public void graficar_matriz(){
-        String dot="digraph G{\nnode[shape=box width=1 height=1];\n";
+    
+    
+    public void graficar_matriz2(){
+        String dot="digraph G{\nnode [shape=plaintext ];\n";
         String nodos="";
-        String estructura="";
         NodoM actual=raiz;
-        while(actual!=null){
-            NodoM actual2=actual;
-            while(actual2!=null){
-                if(actual2.y==-1|actual2.x==-1){
-                    //System.out.println("cabecera");
-                }else{
-                    nodos+="nodo"+actual2.hashCode()+"[label=\"\""+", style = filled, fillcolor = "+actual2.color+",group="+actual2.x+"];\n";
-                    if(actual2.siguiente!=null){
-                    estructura+="{rank=same "+"nodo"+actual2.hashCode()+"->"+"nodo"+actual2.siguiente.hashCode()+"[style=invis]}\n";
-                    }
-                }
-                
-                
-                actual2=actual2.siguiente;
-            }
-            actual=actual.abajo;
-        }
         
-        actual=raiz;
-        while(actual!=null){
-            NodoM actual2=actual;
-            while(actual2!=null){
-                if(actual2.abajo!=null){
-                    if(actual2.y!=-1&&actual2.x!=-1){
-                        estructura+="nodo"+actual2.hashCode()+"->"+"nodo"+actual2.abajo.hashCode()+"[style=invis]\n";
-                    }
-                    
-                }
-                actual2=actual2.abajo;
-            }
+        //doble while para ver el numero de cabeceras de columnas (ver max)
+        
+        while(actual.siguiente!=null){
             actual=actual.siguiente;
         }
-        dot+=nodos+estructura+"}";
+        int ancho=actual.x;
+        actual=raiz;
+        while(actual.abajo!=null){
+            actual=actual.abajo;
+        }
+        int alto=actual.y;
+        System.out.println(ancho+" "+alto);
+        nodos+="Nodounico[ label=<<table border=\"0\" cellspacing=\"0\" cellborder=\"0\" width=\"100\" height=\"100\" >\n";
+        
+        actual=null;
+        for (int j = 0; j < alto+1; j++) {
+            nodos+="<tr>\n";
+            for (int i = 0; i < ancho+1; i++) {
+                actual=verificar_existencia(i, j);
+                if(actual==null){
+                    nodos+="<td bgcolor=\"white\" width=\"1\" height=\"1\"></td>\n";
+                }else{
+                    nodos+="<td bgcolor=\""+actual.color+"\" width=\"1\" height=\"1\"></td>\n";
+                }
+            }
+            nodos+="</tr>\n";
+        }
+        nodos+="</table>>];\n";
+        
+        dot+=nodos+"}";
         System.out.println(dot);
         try{
             FileWriter f=new FileWriter("Imagenes logicas/Archivos dot/grafico.dot");
@@ -275,42 +274,6 @@ public int Cfilas=0;
         }catch(Exception e){
             System.out.println(e);
         }
-    }
-    
-    public void graficar_matriz2(){
-        String dot="digraph G{\nnode[shape=box width=1 height=1];\n";
-        String nodos="";
-        String estructura="";
-        NodoM actual=raiz;
-        
-        //doble while para ver el numero de cabeceras de columnas (ver max)
-        actual=raiz;
-        while(actual!=null){
-            NodoM actual2=actual;
-            while(actual2.siguiente!=null){
-                actual2=actual2.siguiente;
-            }
-            int columnas=actual2.x;
-            int filas=actual.y;
-            System.out.println(columnas);
-            for (int i = 0; i < columnas; i++) {
-                
-            }
-            actual=actual.abajo;
-        }
-        dot+=nodos+estructura+"}";
-        System.out.println(dot);
-//        try{
-//            FileWriter f=new FileWriter("Imagenes logicas/Archivos dot/grafico.dot");
-//            BufferedWriter bufer=new BufferedWriter(f);
-//            bufer.write(dot);
-//            bufer.close();
-//            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","Imagenes logicas/Archivos dot/grafico.dot","-o","Imagenes logicas/"+raiz.color+".png");
-//            p.redirectErrorStream(true);
-//            p.start();
-//        }catch(Exception e){
-//            System.out.println(e);
-//        }
     }
 
 }
