@@ -243,7 +243,7 @@ public int Cfilas=0;
             actual=actual.abajo;
         }
         int alto=actual.y;
-        System.out.println(ancho+" "+alto);
+        //System.out.println(ancho+" "+alto);
         nodos+="Nodounico[ label=<<table border=\"0\" cellspacing=\"0\" cellborder=\"0\" width=\"100\" height=\"100\" >\n";
         
         actual=null;
@@ -262,7 +262,7 @@ public int Cfilas=0;
         nodos+="</table>>];\n";
         
         dot+=nodos+"}";
-        System.out.println(dot);
+        //System.out.println(dot);
         try{
             FileWriter f=new FileWriter("Imagenes logicas/Archivos dot/grafico.dot");
             BufferedWriter bufer=new BufferedWriter(f);

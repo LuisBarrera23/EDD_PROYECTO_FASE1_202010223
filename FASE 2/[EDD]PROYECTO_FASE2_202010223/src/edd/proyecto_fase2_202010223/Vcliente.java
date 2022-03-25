@@ -201,6 +201,7 @@ public class Vcliente extends javax.swing.JFrame {
                 
                 JsonParser parser = new JsonParser();
                 JsonArray arreglo = parser.parse(contenido).getAsJsonArray();
+                //Matriz nueva=new Matriz("COMPLETA");
                 for (int i = 0; i < arreglo.size(); i++) {
                     JsonObject objeto = arreglo.get(i).getAsJsonObject();
                     int idcapa = objeto.get("ID_CAPA").getAsInt();
@@ -215,6 +216,8 @@ public class Vcliente extends javax.swing.JFrame {
                         //System.out.println("coordenada x="+x+" y="+y+" color"+color);
                         nueva.insertarNodo(x, y, color);
                     }
+                    Capa c=new Capa(idcapa,nueva);
+                    cliente.capas.insertar(c);
 //                    if(idcapa==0){
 //                        nueva.graficardot_matriz();
 //                    }
