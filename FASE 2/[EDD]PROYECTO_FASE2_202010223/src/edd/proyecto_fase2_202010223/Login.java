@@ -193,9 +193,7 @@ public class Login extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(this, "Cliente Logueado con exito\n" + logueado.getNombre(), "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
                         Vcliente c = new Vcliente(logueado);
-                        //c.cliente = logueado;
                         c.setVisible(true);
-                        //c.modificaciones();
                         this.dispose();
                     }
                 } catch (Exception e) {

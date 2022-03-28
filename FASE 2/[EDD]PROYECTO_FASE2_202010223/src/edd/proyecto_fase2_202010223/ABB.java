@@ -93,26 +93,14 @@ public class ABB {
         }
     }
     
-    void graficar(){
+    String graficar(){
         estructura="";
         modificado(raiz);
         String dot="digraph G{\nnode [shape=circle,color=dodgerblue1,style = filled];\n";
         
         dot+=estructura+"\n}";
         System.out.println(dot);
-//        try{
-//            FileWriter f=new FileWriter("grafico.dot");
-//            BufferedWriter bufer=new BufferedWriter(f);
-//            bufer.write(dot);
-//            bufer.close();
-//            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","grafico.dot","-o","carnet.png");
-//            p.redirectErrorStream(true);
-//            p.start();
-//            ProcessBuilder p2=new ProcessBuilder("cmd.exe","/c","carnet.png");
-//            p2.redirectErrorStream(true);
-//            p2.start();
-//        }catch(Exception e){
-//            System.out.println(e);
-//        }
+        return dot;
+        
     }
 }

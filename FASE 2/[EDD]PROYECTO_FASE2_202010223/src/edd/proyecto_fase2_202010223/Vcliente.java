@@ -8,9 +8,19 @@ package edd.proyecto_fase2_202010223;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -24,11 +34,11 @@ public class Vcliente extends javax.swing.JFrame {
     /**
      * Creates new form Cliente
      */
-    
     public Cliente cliente;
+
     public Vcliente(Cliente cliente) {
         initComponents();
-        this.cliente=cliente;
+        this.cliente = cliente;
         modificaciones();
     }
 
@@ -50,11 +60,12 @@ public class Vcliente extends javax.swing.JFrame {
         b2 = new javax.swing.JButton();
         b3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jLabel2 = new javax.swing.JLabel();
+        visualizador = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        b4 = new javax.swing.JButton();
+        b5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1500, 900));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 255));
 
@@ -66,6 +77,11 @@ public class Vcliente extends javax.swing.JFrame {
         });
 
         b2.setText("Imagenes");
+        b2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b2ActionPerformed(evt);
+            }
+        });
 
         b3.setText("Albunes");
         b3.addActionListener(new java.awt.event.ActionListener() {
@@ -74,46 +90,74 @@ public class Vcliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel2.setOpaque(true);
-        jScrollPane1.setViewportView(jLabel2);
+        visualizador.setBackground(new java.awt.Color(255, 255, 255));
+        visualizador.setForeground(new java.awt.Color(0, 0, 0));
+        visualizador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        visualizador.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        visualizador.setOpaque(true);
+        jScrollPane1.setViewportView(visualizador);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cargas Masivas");
+
+        b4.setText("Cerrar sesión");
+        b4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b4ActionPerformed(evt);
+            }
+        });
+
+        b5.setText("Ver Arbol de capas");
+        b5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(375, 375, 375)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(b1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(b2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(b3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1134, Short.MAX_VALUE))
+                        .addGap(375, 375, 375)
+                        .addComponent(jScrollPane1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(b4))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(b1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(b2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(b3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 465, Short.MAX_VALUE)
+                                .addComponent(b5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(463, 463, 463)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(b4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(b1)
                     .addComponent(b2)
-                    .addComponent(b3))
+                    .addComponent(b3)
+                    .addComponent(b5))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
                 .addContainerGap())
@@ -141,7 +185,57 @@ public class Vcliente extends javax.swing.JFrame {
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
         // TODO add your handling code here:
         this.carga_capas();
+
+        this.dispose();
+        Vcliente c = new Vcliente(cliente);
+        c.setVisible(true);
+
     }//GEN-LAST:event_b1ActionPerformed
+
+    private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
+        // TODO add your handling code here:
+        try{
+            Path ruta = Paths.get("src/IMAGENES/arbolCapas.png");
+            Files.deleteIfExists(ruta);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        Login l = new Login();
+        l.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_b4ActionPerformed
+
+    private void b5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5ActionPerformed
+        // TODO add your handling code here:
+        try {
+            File tree = null;
+            tree = new File("./src/IMAGENES/arbolCapas.png");
+            BufferedImage bi = ImageIO.read(tree);
+            ImageIcon image2 = new ImageIcon(bi);
+            Icon Tree = new ImageIcon(image2.getImage());
+            visualizador.setIcon(Tree);
+        } catch (IOException ex) {
+        }
+//        try {
+//            String dot = cliente.capas.graficar();
+//            FileWriter f = new FileWriter("graficoCapas.dot");
+//            BufferedWriter bufer = new BufferedWriter(f);
+//            bufer.write(dot);
+//            bufer.close();
+//            ProcessBuilder p = new ProcessBuilder("dot", "-Tpng", "graficoCapas.dot", "-o", "src/IMAGENES/arbolCapas.png");
+//            p.redirectErrorStream(true);
+//            p.start();
+//            visualizador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/arbolCapas.png")));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+    }//GEN-LAST:event_b5ActionPerformed
+
+    private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
+        // TODO add your handling code here:
+        jScrollPane1.repaint();
+        visualizador.repaint();
+    }//GEN-LAST:event_b2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,10 +289,8 @@ public class Vcliente extends javax.swing.JFrame {
                 while ((texto = obj.readLine()) != null) {
                     contenido += texto + "\n";
                 }
-                contenido=contenido.toUpperCase();
-                //System.out.println(contenido);
-                
-                
+                contenido = contenido.toUpperCase();
+
                 JsonParser parser = new JsonParser();
                 JsonArray arreglo = parser.parse(contenido).getAsJsonArray();
                 //Matriz nueva=new Matriz("COMPLETA");
@@ -207,28 +299,33 @@ public class Vcliente extends javax.swing.JFrame {
                     int idcapa = objeto.get("ID_CAPA").getAsInt();
                     JsonArray pixeles = objeto.get("PIXELES").getAsJsonArray();
                     //System.out.println("capa"+idcapa);
-                    Matriz nueva=new Matriz("CAPA"+idcapa);
+                    Matriz nueva = new Matriz("CAPA" + idcapa);
                     for (int j = 0; j < pixeles.size(); j++) {
-                        JsonObject p=pixeles.get(j).getAsJsonObject();
-                        int y= p.get("FILA").getAsInt();
-                        int x= p.get("COLUMNA").getAsInt();
-                        String color= p.get("COLOR").getAsString();
+                        JsonObject p = pixeles.get(j).getAsJsonObject();
+                        int y = p.get("FILA").getAsInt();
+                        int x = p.get("COLUMNA").getAsInt();
+                        String color = p.get("COLOR").getAsString();
                         //System.out.println("coordenada x="+x+" y="+y+" color"+color);
                         nueva.insertarNodo(x, y, color);
                     }
-                    Capa c=new Capa(idcapa,nueva);
+                    Capa c = new Capa(idcapa, nueva);
                     cliente.capas.insertar(c);
-//                    if(idcapa==0){
-//                        nueva.graficardot_matriz();
-//                    }
-                    //nueva.graficardot_matriz();
-                    //nueva.graficar_matriz2();
                 }
-                //nueva.graficar_matriz2();
-                //jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/LOGIN2.png")));
                 JOptionPane.showMessageDialog(this, "Capas cargadas con exito", "AVISO", JOptionPane.INFORMATION_MESSAGE);
-                
-                
+
+                try {
+                    String dot = cliente.capas.graficar();
+                    FileWriter f = new FileWriter("graficoCapas.dot");
+                    BufferedWriter bufer = new BufferedWriter(f);
+                    bufer.write(dot);
+                    bufer.close();
+                    ProcessBuilder p = new ProcessBuilder("dot", "-Tpng", "graficoCapas.dot", "-o", "src/IMAGENES/arbolCapas.png");
+                    p.redirectErrorStream(true);
+                    p.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             } catch (Exception e) {
                 System.out.println("Error en la lectura del archivo");
                 e.printStackTrace();
@@ -236,8 +333,8 @@ public class Vcliente extends javax.swing.JFrame {
         }
 
     }
-    
-    public void modificaciones(){
+
+    public void modificaciones() {
         setTitle(cliente.getNombre());
     }
 
@@ -245,9 +342,11 @@ public class Vcliente extends javax.swing.JFrame {
     private javax.swing.JButton b1;
     private javax.swing.JButton b2;
     private javax.swing.JButton b3;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton b4;
+    private javax.swing.JButton b5;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel visualizador;
     // End of variables declaration//GEN-END:variables
 }
