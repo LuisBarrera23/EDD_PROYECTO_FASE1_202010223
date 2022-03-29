@@ -26,6 +26,7 @@ public class ABB {
     
     Nodo raiz=null;
     String estructura;
+    Capa buscada=null;
     
     void insertar(Capa capa){
         if(raiz!=null){
@@ -99,8 +100,42 @@ public class ABB {
         String dot="digraph G{\nnode [shape=circle,color=dodgerblue1,style = filled];\n";
         
         dot+=estructura+"\n}";
-        System.out.println(dot);
+        //System.out.println(dot);
         return dot;
         
+    }
+    
+    void combocapas(Nodo temp,Vcliente vent) {
+        if (temp != null) {
+            vent.ComboCapas.addItem(String.valueOf(temp.capa.numero));
+            combocapas(temp.izquierda,vent);
+            combocapas(temp.derecha,vent);
+        }
+    }
+    
+    void buscar(Nodo temp,int n) {
+        if (temp != null) {
+            buscar(temp.izquierda,n);
+            buscar(temp.derecha,n);
+            if(temp.capa.numero==n){
+                buscada=temp.capa;
+            }
+        }        
+    }
+    
+    void graficarcapa(int num){
+        buscada=null;
+        buscar(raiz,num);
+        if(buscada!=null){
+            buscada.matriz.graficar_matriz2();
+        }
+    }
+    
+    void graficarcapalogica(int num){
+        buscada=null;
+        buscar(raiz,num);
+        if(buscada!=null){
+            buscada.matriz.graficardot_matriz();
+        }
     }
 }

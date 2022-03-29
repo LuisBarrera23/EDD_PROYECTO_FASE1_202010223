@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -39,7 +41,7 @@ public class Vcliente extends javax.swing.JFrame {
     public Vcliente(Cliente cliente) {
         initComponents();
         this.cliente = cliente;
-        modificaciones();
+        actualizar();
     }
 
     private Vcliente() {
@@ -64,6 +66,9 @@ public class Vcliente extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         b4 = new javax.swing.JButton();
         b5 = new javax.swing.JButton();
+        ComboCapas = new javax.swing.JComboBox<>();
+        b6 = new javax.swing.JButton();
+        b7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,31 +120,54 @@ public class Vcliente extends javax.swing.JFrame {
             }
         });
 
+        ComboCapas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+
+        b6.setText("Ver capa");
+        b6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b6ActionPerformed(evt);
+            }
+        });
+
+        b7.setText("Ver capa logica");
+        b7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(375, 375, 375)
-                        .addComponent(jScrollPane1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(ComboCapas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(228, 228, 228))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(b7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(b6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(188, 188, 188)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(b4))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(b1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(b2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(b3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 465, Short.MAX_VALUE)
-                                .addComponent(b5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(463, 463, 463)))))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(b4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(b1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(b2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(b3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(b5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(463, 463, 463)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -158,9 +186,19 @@ public class Vcliente extends javax.swing.JFrame {
                     .addComponent(b2)
                     .addComponent(b3)
                     .addComponent(b5))
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(ComboCapas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(b6)
+                        .addGap(18, 18, 18)
+                        .addComponent(b7)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,19 +223,25 @@ public class Vcliente extends javax.swing.JFrame {
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
         // TODO add your handling code here:
         this.carga_capas();
+//        this.dispose();
+//        Vcliente c = new Vcliente(cliente);
+//        c.setVisible(true);
 
-        this.dispose();
-        Vcliente c = new Vcliente(cliente);
-        c.setVisible(true);
 
     }//GEN-LAST:event_b1ActionPerformed
 
     private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
         // TODO add your handling code here:
-        try{
-            Path ruta = Paths.get("src/IMAGENES/arbolCapas.png");
+        try {
+            Path ruta = Paths.get("arbolCapas.png");
             Files.deleteIfExists(ruta);
-        }catch(Exception e){
+            ruta = Paths.get("graficoCapas.dot");
+            Files.deleteIfExists(ruta);
+            ruta = Paths.get("graficoCapa.png");
+            Files.deleteIfExists(ruta);
+            ruta = Paths.get("graficoCapa.dot");
+            Files.deleteIfExists(ruta);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Login l = new Login();
@@ -208,34 +252,63 @@ public class Vcliente extends javax.swing.JFrame {
     private void b5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5ActionPerformed
         // TODO add your handling code here:
         try {
-            File tree = null;
-            tree = new File("./src/IMAGENES/arbolCapas.png");
-            BufferedImage bi = ImageIO.read(tree);
-            ImageIcon image2 = new ImageIcon(bi);
-            Icon Tree = new ImageIcon(image2.getImage());
-            visualizador.setIcon(Tree);
-        } catch (IOException ex) {
+            String dot = cliente.capas.graficar();
+            FileWriter f = new FileWriter("graficoCapas.dot");
+            BufferedWriter bufer = new BufferedWriter(f);
+            bufer.write(dot);
+            bufer.close();
+            ProcessBuilder p = new ProcessBuilder("dot", "-Tpng", "graficoCapas.dot", "-o", "arbolCapas.png");
+            p.redirectErrorStream(true);
+            p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(1);
+            File archivo = new File("arbolCapas.png");
+            BufferedImage buffer = ImageIO.read(archivo);
+            ImageIcon imagen = new ImageIcon(buffer);
+            Icon icono = new ImageIcon(imagen.getImage());
+            visualizador.setIcon(icono);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-//        try {
-//            String dot = cliente.capas.graficar();
-//            FileWriter f = new FileWriter("graficoCapas.dot");
-//            BufferedWriter bufer = new BufferedWriter(f);
-//            bufer.write(dot);
-//            bufer.close();
-//            ProcessBuilder p = new ProcessBuilder("dot", "-Tpng", "graficoCapas.dot", "-o", "src/IMAGENES/arbolCapas.png");
-//            p.redirectErrorStream(true);
-//            p.start();
-//            visualizador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/arbolCapas.png")));
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }//GEN-LAST:event_b5ActionPerformed
 
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
         // TODO add your handling code here:
-        jScrollPane1.repaint();
-        visualizador.repaint();
+        carga_imagenes();
     }//GEN-LAST:event_b2ActionPerformed
+
+    private void b6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b6ActionPerformed
+        // TODO add your handling code here:
+        try{
+            int numero=Integer.parseInt(ComboCapas.getSelectedItem().toString());
+            cliente.capas.graficarcapa(numero);
+            File archivo = new File("graficoCapa.png");
+            BufferedImage buffer = ImageIO.read(archivo);
+            ImageIcon imagen = new ImageIcon(buffer);
+            Icon icono = new ImageIcon(imagen.getImage());
+            visualizador.setIcon(null);
+            visualizador.setIcon(icono);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_b6ActionPerformed
+
+    private void b7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b7ActionPerformed
+        // TODO add your handling code here:
+        try{
+            int numero=Integer.parseInt(ComboCapas.getSelectedItem().toString());
+            cliente.capas.graficarcapalogica(numero);
+            JOptionPane.showMessageDialog(this, "Capas generada con exito", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+            File archivo = new File("graficoCapa.png");
+            BufferedImage buffer = ImageIO.read(archivo);
+            ImageIcon imagen = new ImageIcon(buffer);
+            Icon icono = new ImageIcon(imagen.getImage());
+            visualizador.setIcon(null);
+            visualizador.setIcon(icono);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_b7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,19 +385,49 @@ public class Vcliente extends javax.swing.JFrame {
                     cliente.capas.insertar(c);
                 }
                 JOptionPane.showMessageDialog(this, "Capas cargadas con exito", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+                actualizar();
+                
 
-                try {
-                    String dot = cliente.capas.graficar();
-                    FileWriter f = new FileWriter("graficoCapas.dot");
-                    BufferedWriter bufer = new BufferedWriter(f);
-                    bufer.write(dot);
-                    bufer.close();
-                    ProcessBuilder p = new ProcessBuilder("dot", "-Tpng", "graficoCapas.dot", "-o", "src/IMAGENES/arbolCapas.png");
-                    p.redirectErrorStream(true);
-                    p.start();
-                } catch (Exception e) {
-                    e.printStackTrace();
+            } catch (Exception e) {
+                System.out.println("Error en la lectura del archivo");
+                e.printStackTrace();
+            }
+        }
+
+    }
+    
+    public void carga_imagenes() {
+        JFileChooser jfc = new JFileChooser();
+        FileNameExtensionFilter Filter = new FileNameExtensionFilter("Archivos JSON", "json");
+        jfc.setFileFilter(Filter);
+        jfc.showOpenDialog(null);
+        File archivo = jfc.getSelectedFile();
+        //System.out.println(archivo); //imprime ruta absoluta
+
+        if (archivo != null) {
+            try {
+                BufferedReader obj = new BufferedReader(new FileReader(archivo));
+                String texto = "";
+                String contenido = "";
+                while ((texto = obj.readLine()) != null) {
+                    contenido += texto + "\n";
                 }
+                contenido = contenido.toUpperCase();
+
+                JsonParser parser = new JsonParser();
+                JsonArray arreglo = parser.parse(contenido).getAsJsonArray();
+                for (int i = 0; i < arreglo.size(); i++) {
+                    JsonObject objeto = arreglo.get(i).getAsJsonObject();
+                    int id = objeto.get("ID").getAsInt();
+                    JsonArray capas = objeto.get("CAPAS").getAsJsonArray();
+                    System.out.println("capas de la imagen---------------");
+                    for (int j = 0; j < capas.size(); j++) {
+                        System.out.println(capas.get(j));
+                    }
+                }
+                JOptionPane.showMessageDialog(this, "Imagenes cargadas con exito", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+                actualizar();
+                
 
             } catch (Exception e) {
                 System.out.println("Error en la lectura del archivo");
@@ -334,16 +437,20 @@ public class Vcliente extends javax.swing.JFrame {
 
     }
 
-    public void modificaciones() {
+    public void actualizar(){
         setTitle(cliente.getNombre());
+        ComboCapas.removeAllItems();
+        cliente.capas.combocapas(cliente.capas.raiz, this);
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> ComboCapas;
     private javax.swing.JButton b1;
     private javax.swing.JButton b2;
     private javax.swing.JButton b3;
     private javax.swing.JButton b4;
     private javax.swing.JButton b5;
+    private javax.swing.JButton b6;
+    private javax.swing.JButton b7;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

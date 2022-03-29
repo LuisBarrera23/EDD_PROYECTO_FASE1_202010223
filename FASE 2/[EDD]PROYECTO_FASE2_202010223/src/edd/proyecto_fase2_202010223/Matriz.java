@@ -2,6 +2,7 @@ package edd.proyecto_fase2_202010223;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import javax.swing.JOptionPane;
 
 public class Matriz {
 public NodoM raiz;
@@ -213,13 +214,14 @@ public int Cfilas=0;
         dot+=nodos+estructura+"}";
         //System.out.println(dot);
         try{
-            FileWriter f=new FileWriter("Imagenes logicas/Archivos dot/graficoCapa"+raiz.color+".dot");
+            FileWriter f=new FileWriter("graficoCapa.dot");
             BufferedWriter bufer=new BufferedWriter(f);
             bufer.write(dot);
             bufer.close();
-            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","Imagenes logicas/Archivos dot/graficoCapa"+raiz.color+".dot","-o","Imagenes logicas/"+raiz.color+".png");
+            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","graficoCapa.dot","-o","graficoCapa.png");
             p.redirectErrorStream(true);
             p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(2);
         }catch(Exception e){
             System.out.println(e);
         }
@@ -264,13 +266,14 @@ public int Cfilas=0;
         dot+=nodos+"}";
         //System.out.println(dot);
         try{
-            FileWriter f=new FileWriter("Imagenes logicas/Archivos dot/grafico.dot");
+            FileWriter f=new FileWriter("graficoCapa.dot");
             BufferedWriter bufer=new BufferedWriter(f);
             bufer.write(dot);
             bufer.close();
-            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","Imagenes logicas/Archivos dot/grafico.dot","-o","Imagenes logicas/"+raiz.color+".png");
+            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","graficoCapa.dot","-o","graficoCapa.png");
             p.redirectErrorStream(true);
             p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(1);
         }catch(Exception e){
             System.out.println(e);
         }
