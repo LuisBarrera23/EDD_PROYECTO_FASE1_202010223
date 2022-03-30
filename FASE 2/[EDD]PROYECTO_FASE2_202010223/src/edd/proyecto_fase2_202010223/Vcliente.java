@@ -69,6 +69,7 @@ public class Vcliente extends javax.swing.JFrame {
         ComboCapas = new javax.swing.JComboBox<>();
         b6 = new javax.swing.JButton();
         b7 = new javax.swing.JButton();
+        b8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +137,13 @@ public class Vcliente extends javax.swing.JFrame {
             }
         });
 
+        b8.setText("Ver Arbol de imagenes");
+        b8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -167,7 +175,9 @@ public class Vcliente extends javax.swing.JFrame {
                         .addComponent(b3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(b5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(463, 463, 463)))
+                        .addGap(18, 18, 18)
+                        .addComponent(b8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(226, 226, 226)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -185,7 +195,8 @@ public class Vcliente extends javax.swing.JFrame {
                     .addComponent(b1)
                     .addComponent(b2)
                     .addComponent(b3)
-                    .addComponent(b5))
+                    .addComponent(b5)
+                    .addComponent(b8))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -298,7 +309,7 @@ public class Vcliente extends javax.swing.JFrame {
         try{
             int numero=Integer.parseInt(ComboCapas.getSelectedItem().toString());
             cliente.capas.graficarcapalogica(numero);
-            JOptionPane.showMessageDialog(this, "Capas generada con exito", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Capa generada con exito", "AVISO", JOptionPane.INFORMATION_MESSAGE);
             File archivo = new File("graficoCapa.png");
             BufferedImage buffer = ImageIO.read(archivo);
             ImageIcon imagen = new ImageIcon(buffer);
@@ -309,6 +320,30 @@ public class Vcliente extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_b7ActionPerformed
+
+    private void b8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b8ActionPerformed
+        // TODO add your handling code here:
+        //ver Arbol de imagenes
+        try {
+            String dot = cliente.imagenes.graficar();
+            FileWriter f = new FileWriter("graficoImagenes.dot");
+            BufferedWriter bufer = new BufferedWriter(f);
+            bufer.write(dot);
+            bufer.close();
+            ProcessBuilder p = new ProcessBuilder("dot", "-Tpng", "graficoImagenes.dot", "-o", "arbolImagenes.png");
+            p.redirectErrorStream(true);
+            p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(1);
+            File archivo = new File("arbolImagenes.png");
+            BufferedImage buffer = ImageIO.read(archivo);
+            ImageIcon imagen = new ImageIcon(buffer);
+            Icon icono = new ImageIcon(imagen.getImage());
+            visualizador.setIcon(null);
+            visualizador.setIcon(icono);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_b8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,12 +454,17 @@ public class Vcliente extends javax.swing.JFrame {
                 for (int i = 0; i < arreglo.size(); i++) {
                     JsonObject objeto = arreglo.get(i).getAsJsonObject();
                     int id = objeto.get("ID").getAsInt();
+                    Imagen nueva=new Imagen(id);
                     JsonArray capas = objeto.get("CAPAS").getAsJsonArray();
-                    System.out.println("capas de la imagen---------------");
+                    //System.out.println("capas de la imagen---------------");
                     for (int j = 0; j < capas.size(); j++) {
-                        System.out.println(capas.get(j));
+                        nueva.agregarcapa(cliente.capas.buscarcapa(capas.get(j).getAsInt()));
+                        //System.out.println(capas.get(j));
                     }
+                    //System.out.println(nueva.capas.graficar());
+                    cliente.imagenes.insertar(nueva);
                 }
+                //cliente.imagenes.graficar();
                 JOptionPane.showMessageDialog(this, "Imagenes cargadas con exito", "AVISO", JOptionPane.INFORMATION_MESSAGE);
                 actualizar();
                 
@@ -451,6 +491,7 @@ public class Vcliente extends javax.swing.JFrame {
     private javax.swing.JButton b5;
     private javax.swing.JButton b6;
     private javax.swing.JButton b7;
+    private javax.swing.JButton b8;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

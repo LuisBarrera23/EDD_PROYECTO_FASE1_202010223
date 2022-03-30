@@ -2,6 +2,7 @@ package edd.proyecto_fase2_202010223;
 
 public class Cliente {
     public ABB capas;
+    public AVL imagenes;
     private long dpi;
     private String nombre;
     private String password;
@@ -11,6 +12,7 @@ public class Cliente {
         this.nombre = nombre;
         this.password = password;
         this.capas=new ABB();
+        this.imagenes=new AVL();
     }
 
     public long getDpi() {

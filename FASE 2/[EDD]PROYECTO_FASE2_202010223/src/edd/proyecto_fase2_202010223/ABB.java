@@ -123,6 +123,16 @@ public class ABB {
         }        
     }
     
+    Capa buscarcapa(int num){
+        buscada=null;
+        buscar(raiz,num);
+        if(buscada!=null){
+            return buscada;
+        }else{
+            return buscada;
+        }
+    }
+    
     void graficarcapa(int num){
         buscada=null;
         buscar(raiz,num);
