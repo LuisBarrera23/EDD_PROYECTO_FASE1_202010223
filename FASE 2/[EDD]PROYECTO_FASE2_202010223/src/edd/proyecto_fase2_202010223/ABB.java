@@ -27,6 +27,10 @@ public class ABB {
     Nodo raiz=null;
     String estructura;
     Capa buscada=null;
+    int contador=0;
+    int conteo=0;
+    Imagen recorrida;
+    String capas;
     
     void insertar(Capa capa){
         if(raiz!=null){
@@ -52,29 +56,7 @@ public class ABB {
         }
     }
     
-    void preorder(Nodo temp) {
-        if (temp != null) {
-            System.out.print(temp.capa.numero + " ");
-            preorder(temp.izquierda);
-            preorder(temp.derecha);
-        }
-    }
-
-    void enorder(Nodo temp) {
-        if (temp != null) {
-            enorder(temp.izquierda);
-            System.out.print(temp.capa.numero + " ");
-            enorder(temp.derecha);
-        }
-    }
-
-    void postorder(Nodo temp) {
-        if (temp != null) {
-            postorder(temp.izquierda);
-            postorder(temp.derecha);
-            System.out.print(temp.capa.numero + " ");
-        }
-    }
+    
     
     void modificado(Nodo temp) {
         if (temp != null) {
@@ -113,6 +95,22 @@ public class ABB {
         }
     }
     
+    void contarcapas(Nodo temp){
+        if (temp != null) {
+            contador++;
+            contarcapas(temp.izquierda);
+            contarcapas(temp.derecha);
+        }
+    }
+    void comboCantidad(Vcliente vent){
+        contador=0;
+        contarcapas(raiz);
+        //System.out.println(contador);
+        for (int i = 0; i < contador; i++) {
+            vent.CombocantidadCapas.addItem(String.valueOf(i+1));
+        }
+    }
+    
     void buscar(Nodo temp,int n) {
         if (temp != null) {
             buscar(temp.izquierda,n);
@@ -146,6 +144,62 @@ public class ABB {
         buscar(raiz,num);
         if(buscada!=null){
             buscada.matriz.graficardot_matriz();
+        }
+    }
+    
+    void preorder(Nodo temp) {
+        if (temp != null) {
+            if(conteo!=0){
+                recorrida.agregarcapa(temp.capa);
+                conteo--;
+                capas+=temp.capa.numero+" ";
+            }
+            preorder(temp.izquierda);
+            preorder(temp.derecha);
+        }
+    }
+
+    void enorder(Nodo temp) {
+        if (temp != null) {
+            enorder(temp.izquierda);
+            if(conteo!=0){
+                recorrida.agregarcapa(temp.capa);
+                conteo--;
+                capas+=temp.capa.numero+" ";
+            }
+            enorder(temp.derecha);
+        }
+    }
+
+    void postorder(Nodo temp) {
+        if (temp != null) {
+            postorder(temp.izquierda);
+            postorder(temp.derecha);
+            if(conteo!=0){
+                recorrida.agregarcapa(temp.capa);
+                conteo--;
+                capas+=temp.capa.numero+" ";
+            }
+        }
+    }
+    
+    void recorrer(int tipo, int cantidad){
+        conteo=0;
+        conteo=cantidad;
+        capas="";
+        recorrida=new Imagen(0);
+        if(tipo==0){
+            preorder(raiz);
+            recorrida.Mimagen.graficar_imagen();
+            //preorder
+        }else if(tipo==1){
+            //inorder
+            enorder(raiz);
+            recorrida.Mimagen.graficar_imagen();
+        }else if(tipo==2){
+            //postorder
+            postorder(raiz);
+            recorrida.Mimagen.graficar_imagen();
         }
     }
 }

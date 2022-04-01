@@ -23,6 +23,7 @@ public class AVL {
 
     NodoAVL raiz = null;
     String estructura;
+    Imagen buscada=null;
 
     void insertar(Imagen img) {
         raiz = insertar(raiz,img);
@@ -156,5 +157,37 @@ public class AVL {
         //System.out.println(dot);
         return dot;
         
+    }
+    
+    public void comboimagenes(NodoAVL temp,Vcliente vent){
+        if (temp != null) {
+            vent.ComboImagenes.addItem(String.valueOf(temp.imagen.numero));
+            comboimagenes(temp.izquierda,vent);
+            comboimagenes(temp.derecha,vent);
+        }
+    }
+    
+    void buscar(NodoAVL temp,int n) {
+        if (temp != null) {
+            buscar(temp.izquierda,n);
+            buscar(temp.derecha,n);
+            if(temp.imagen.numero==n){
+                buscada=temp.imagen;
+            }
+        }        
+    }
+    
+    void graficarimagen(int num){
+        buscada=null;
+        buscar(raiz,num);
+        if(buscada!=null){
+            buscada.Mimagen.graficar_imagen();
+        }
+    }
+    
+    Imagen buscar_retornar(int numero){
+        buscada=null;
+        buscar(raiz,numero);
+        return buscada;
     }
 }

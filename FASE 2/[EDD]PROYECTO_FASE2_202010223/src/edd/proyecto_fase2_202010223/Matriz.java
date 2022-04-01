@@ -273,7 +273,57 @@ public int Cfilas=0;
             ProcessBuilder p=new ProcessBuilder("dot","-Tpng","graficoCapa.dot","-o","graficoCapa.png");
             p.redirectErrorStream(true);
             p.start();
-            java.util.concurrent.TimeUnit.SECONDS.sleep(1);
+            java.util.concurrent.TimeUnit.SECONDS.sleep(3);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    public void graficar_imagen(){
+        String dot="digraph G{\nnode [shape=plaintext ];\n";
+        String nodos="";
+        NodoM actual=raiz;
+        
+        //doble while para ver el numero de cabeceras de columnas (ver max)
+        
+        while(actual.siguiente!=null){
+            actual=actual.siguiente;
+        }
+        int ancho=actual.x;
+        actual=raiz;
+        while(actual.abajo!=null){
+            actual=actual.abajo;
+        }
+        int alto=actual.y;
+        //System.out.println(ancho+" "+alto);
+        nodos+="Nodounico[ label=<<table border=\"0\" cellspacing=\"0\" cellborder=\"0\" width=\"100\" height=\"100\" >\n";
+        
+        actual=null;
+        for (int j = 0; j < alto+1; j++) {
+            nodos+="<tr>\n";
+            for (int i = 0; i < ancho+1; i++) {
+                actual=verificar_existencia(i, j);
+                if(actual==null){
+                    nodos+="<td bgcolor=\"white\" width=\"1\" height=\"1\"></td>\n";
+                }else{
+                    nodos+="<td bgcolor=\""+actual.color+"\" width=\"1\" height=\"1\"></td>\n";
+                }
+            }
+            nodos+="</tr>\n";
+        }
+        nodos+="</table>>];\n";
+        
+        dot+=nodos+"}";
+        //System.out.println(dot);
+        try{
+            FileWriter f=new FileWriter("graficoImagen.dot");
+            BufferedWriter bufer=new BufferedWriter(f);
+            bufer.write(dot);
+            bufer.close();
+            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","graficoImagen.dot","-o","graficoImagen.png");
+            p.redirectErrorStream(true);
+            p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(3);
         }catch(Exception e){
             System.out.println(e);
         }
