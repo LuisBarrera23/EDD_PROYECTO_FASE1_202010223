@@ -8,9 +8,15 @@ package edd.proyecto_fase2_202010223;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -39,6 +45,9 @@ public class Administrador extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         b1 = new javax.swing.JButton();
         b2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        visualizador = new javax.swing.JLabel();
+        b3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,25 +69,49 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
+        visualizador.setBackground(new java.awt.Color(255, 255, 255));
+        visualizador.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        visualizador.setOpaque(true);
+        jScrollPane1.setViewportView(visualizador);
+
+        b3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        b3.setText("Ver Arbol B de clientes");
+        b3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(b1)
-                .addContainerGap(1223, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(b2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(b1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(b3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1199, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(b2)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(b1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 767, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(b1)
+                        .addGap(18, 18, 18)
+                        .addComponent(b3)
+                        .addGap(0, 715, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(b2)
                 .addContainerGap())
         );
@@ -109,6 +142,30 @@ public class Administrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         cargarclientes();
     }//GEN-LAST:event_b1ActionPerformed
+
+    private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
+        // TODO add your handling code here:
+        
+        try{
+            String dot=EDDPROYECTO_FASE2_202010223.clientes2.graficar();
+            FileWriter f=new FileWriter("grafico.dot");
+            BufferedWriter bufer=new BufferedWriter(f);
+            bufer.write(dot);
+            bufer.close();
+            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","grafico.dot","-o","graficoB.png");
+            p.redirectErrorStream(true);
+            p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(2);
+            File archivo = new File("graficoB.png");
+            BufferedImage buffer = ImageIO.read(archivo);
+            ImageIcon imagen = new ImageIcon(buffer);
+            Icon icono = new ImageIcon(imagen.getImage());
+            visualizador.setIcon(null);
+            visualizador.setIcon(icono);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_b3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,8 +229,11 @@ public class Administrador extends javax.swing.JFrame {
                     String nombre=objeto.get("NOMBRE_CLIENTE").getAsString();
                     String contra=objeto.get("PASSWORD").getAsString();
                     Cliente nuevo=new Cliente(dpi,nombre,contra);
-                    System.out.println(nuevo.toString());
+                    //System.out.println(nuevo.toString());
+                    EDDPROYECTO_FASE2_202010223.clientes2.insertar(nuevo);
                 }
+                //EDDPROYECTO_FASE2_202010223.clientes2.recorrer(EDDPROYECTO_FASE2_202010223.clientes2.raiz);
+                
                 
                 
             } catch (Exception e) {
@@ -187,6 +247,9 @@ public class Administrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b1;
     private javax.swing.JButton b2;
+    private javax.swing.JButton b3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel visualizador;
     // End of variables declaration//GEN-END:variables
 }

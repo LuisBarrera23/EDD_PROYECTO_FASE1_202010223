@@ -178,7 +178,7 @@ public class registro extends javax.swing.JFrame {
             try {
                 long dpi = Long.parseLong(DPI);
                 Cliente cliente=new Cliente(dpi,nombre,contraseña);
-                EDDPROYECTO_FASE2_202010223.clientes.insertar(cliente);
+                EDDPROYECTO_FASE2_202010223.clientes2.insertar(cliente);
                 JOptionPane.showMessageDialog(this, "Registro realizado con exito", "Añadido", JOptionPane.INFORMATION_MESSAGE);
                 Login l=new Login();
                 l.setVisible(true);

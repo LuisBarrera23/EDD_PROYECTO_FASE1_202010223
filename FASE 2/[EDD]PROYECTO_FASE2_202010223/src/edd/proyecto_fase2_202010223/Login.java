@@ -187,7 +187,7 @@ public class Login extends javax.swing.JFrame {
             } else {
                 try {
                     long dpi = Long.parseLong(usuario);
-                    Cliente logueado = EDDPROYECTO_FASE2_202010223.clientes.logueo(dpi, contra);
+                    Cliente logueado = EDDPROYECTO_FASE2_202010223.clientes2.logueado(dpi, contra);
                     if (logueado == null) {
                         JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "ERROR", JOptionPane.INFORMATION_MESSAGE);
                     } else {
