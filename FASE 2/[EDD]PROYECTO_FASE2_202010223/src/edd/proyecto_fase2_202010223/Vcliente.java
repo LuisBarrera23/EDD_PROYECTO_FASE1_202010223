@@ -87,6 +87,12 @@ public class Vcliente extends javax.swing.JFrame {
         b13 = new javax.swing.JButton();
         idImagenG = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        b14 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        b15 = new javax.swing.JButton();
+        b16 = new javax.swing.JButton();
+        b17 = new javax.swing.JButton();
+        b18 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,6 +242,49 @@ public class Vcliente extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ID:");
 
+        b14.setText("Eliminar imagen");
+        b14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b14ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Reportes");
+
+        b15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        b15.setText("Top 5 imagenes con mas capas");
+        b15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b15ActionPerformed(evt);
+            }
+        });
+
+        b16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        b16.setText("Capas que son hojas");
+        b16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b16ActionPerformed(evt);
+            }
+        });
+
+        b17.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        b17.setText("Profundidad del arbol de capas");
+        b17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b17ActionPerformed(evt);
+            }
+        });
+
+        b18.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        b18.setText("Capas en: preorden, inorden, postorden");
+        b18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b18ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -253,7 +302,7 @@ public class Vcliente extends javax.swing.JFrame {
                         .addComponent(b2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(b3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 369, Short.MAX_VALUE)
                         .addComponent(b5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(b8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,49 +310,52 @@ public class Vcliente extends javax.swing.JFrame {
                         .addComponent(b12, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(147, 147, 147))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(b7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(b6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addGap(32, 32, 32))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(ComboCapas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(b9)
-                                            .addComponent(ComboImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton2)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(b10, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel1))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ComboCapas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(b7, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                    .addComponent(b6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel2)
-                                        .addComponent(ComboRecorrido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4)
-                                        .addComponent(CombocantidadCapas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Lrecorrido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(variascapas)
-                                        .addComponent(Jlabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(idImagenG, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(20, 20, 20)
+                                        .addComponent(ComboImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(b9))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(b11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(b13, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(b14)
+                                            .addComponent(jButton2)))))
+                            .addComponent(jLabel2)
+                            .addComponent(ComboRecorrido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(CombocantidadCapas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Lrecorrido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(variascapas)
+                            .addComponent(Jlabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idImagenG, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(b11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(b13, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(103, 103, 103)
+                                .addComponent(b10, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6)
+                            .addComponent(b15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(b16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(b17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(b18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -324,21 +376,23 @@ public class Vcliente extends javax.swing.JFrame {
                     .addComponent(b8)
                     .addComponent(b12)
                     .addComponent(b5))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ComboImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboCapas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ComboCapas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(b6)
                     .addComponent(b9))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(b7)
                     .addComponent(jButton2))
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(b14)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(5, 5, 5)
                 .addComponent(jLabel2)
                 .addGap(4, 4, 4)
                 .addComponent(ComboRecorrido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -348,9 +402,9 @@ public class Vcliente extends javax.swing.JFrame {
                 .addComponent(CombocantidadCapas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(b10)
-                .addGap(28, 28, 28)
-                .addComponent(Lrecorrido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(Lrecorrido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(Jlabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(variascapas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,9 +415,19 @@ public class Vcliente extends javax.swing.JFrame {
                     .addComponent(b13)
                     .addComponent(idImagenG, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(b15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(b16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(b17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(b18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 111, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
         );
@@ -651,6 +715,121 @@ public class Vcliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_b13ActionPerformed
 
+    private void b14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b14ActionPerformed
+        // TODO add your handling code here:
+        try{
+            int numero=Integer.parseInt(ComboImagenes.getSelectedItem().toString());
+            Imagen img=cliente.imagenes.buscar_retornar(numero);
+            cliente.imagenes.eliminar(img);
+            cliente.Albunes.eliminarimagen(numero);
+            actualizar();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_b14ActionPerformed
+
+    private void b15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b15ActionPerformed
+        // TODO add your handling code here:
+        //top 5 imagenes con mas capas
+        cliente.imagenes.TopImagenesCapas(this);
+    }//GEN-LAST:event_b15ActionPerformed
+
+    private void b16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b16ActionPerformed
+        // TODO add your handling code here:
+        String dot="digraph G{\nnode [shape=plaintext ];\nlabel=\"Todas las capas que son Hojas\";\n";
+        String nodos1="";
+        nodos1+="Nodounico[ label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n";
+        
+        nodos1+=cliente.capas.hojas();
+        nodos1+="</table>>];\n";
+        dot+=nodos1+"\n}";
+        //System.out.println(dot);
+        try{
+            FileWriter f=new FileWriter("grafico.dot");
+            BufferedWriter bufer=new BufferedWriter(f);
+            bufer.write(dot);
+            bufer.close();
+            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","grafico.dot","-o","reporte.png");
+            p.redirectErrorStream(true);
+            p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(1);
+            File archivo = new File("reporte.png");
+            BufferedImage buffer = ImageIO.read(archivo);
+            ImageIcon imagen = new ImageIcon(buffer);
+            Icon icono = new ImageIcon(imagen.getImage());
+            visualizador.setIcon(null);
+            visualizador.setIcon(icono);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_b16ActionPerformed
+
+    private void b17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b17ActionPerformed
+        // TODO add your handling code here:
+        String dot="digraph G{\nnode [shape=plaintext ];\nlabel=\"Profundidad del Arbol de Capas\";\n";
+        String nodos1="";
+        nodos1+="Nodounico[ label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n";
+        if(cliente.capas.raiz!=null){
+            nodos1+="<tr>\n<td>"+(cliente.capas.raiz.prof+1)+"</td>\n</tr>\n";  
+        }
+        nodos1+="</table>>];\n";
+        dot+=nodos1+"\n}";
+        //System.out.println(dot);
+        try{
+            FileWriter f=new FileWriter("grafico.dot");
+            BufferedWriter bufer=new BufferedWriter(f);
+            bufer.write(dot);
+            bufer.close();
+            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","grafico.dot","-o","reporte.png");
+            p.redirectErrorStream(true);
+            p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(1);
+            File archivo = new File("reporte.png");
+            BufferedImage buffer = ImageIO.read(archivo);
+            ImageIcon imagen = new ImageIcon(buffer);
+            Icon icono = new ImageIcon(imagen.getImage());
+            visualizador.setIcon(null);
+            visualizador.setIcon(icono);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_b17ActionPerformed
+
+    private void b18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b18ActionPerformed
+        // TODO add your handling code here:
+        String dot="digraph G{\nnode [shape=plaintext ];\nlabel=\"Recorridos del Arbol de Capas\";\n";
+        String nodos1="";
+        nodos1+="Nodounico[ label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n";
+        
+        
+        nodos1+="<tr>\n<td>Preorder</td><td>"+cliente.capas.stringReco(0)+"</td>\n</tr>\n";
+        nodos1+="<tr>\n<td>Inorder</td><td>"+cliente.capas.stringReco(1)+"</td>\n</tr>\n";
+        nodos1+="<tr>\n<td>Postorder</td><td>"+cliente.capas.stringReco(2)+"</td>\n</tr>\n";
+        
+        
+        nodos1+="</table>>];\n";
+        dot+=nodos1+"\n}";
+        //System.out.println(dot);
+        try{
+            FileWriter f=new FileWriter("grafico.dot");
+            BufferedWriter bufer=new BufferedWriter(f);
+            bufer.write(dot);
+            bufer.close();
+            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","grafico.dot","-o","reporte.png");
+            p.redirectErrorStream(true);
+            p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(1);
+            File archivo = new File("reporte.png");
+            BufferedImage buffer = ImageIO.read(archivo);
+            ImageIcon imagen = new ImageIcon(buffer);
+            Icon icono = new ImageIcon(imagen.getImage());
+            visualizador.setIcon(null);
+            visualizador.setIcon(icono);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_b18ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -810,12 +989,15 @@ public class Vcliente extends javax.swing.JFrame {
                     //System.out.println("imagenes del album---------------");
                     Listaimagenes lista=new Listaimagenes();
                     for (int j = 0; j < imagenes.size(); j++) {
-                        Imagen img=cliente.imagenes.buscar_retornar(imagenes.get(j).getAsInt());
+                        Imagen img=null;
+                        img=cliente.imagenes.buscar_retornar(imagenes.get(j).getAsInt());
                         if(img!=null){
                             lista.insertar(img);
                         }
                     }
+                    System.out.println("");
                     Album nuevo= new Album(nombre,lista);
+                    nuevo.imagenes.mostrar();
                     cliente.Albunes.insertar(nuevo);
                 }
                 //cliente.imagenes.graficar();
@@ -852,6 +1034,11 @@ public class Vcliente extends javax.swing.JFrame {
     private javax.swing.JButton b11;
     private javax.swing.JButton b12;
     private javax.swing.JButton b13;
+    private javax.swing.JButton b14;
+    private javax.swing.JButton b15;
+    private javax.swing.JButton b16;
+    private javax.swing.JButton b17;
+    private javax.swing.JButton b18;
     private javax.swing.JButton b2;
     private javax.swing.JButton b3;
     private javax.swing.JButton b4;
@@ -867,9 +1054,10 @@ public class Vcliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField variascapas;
-    private javax.swing.JLabel visualizador;
+    public javax.swing.JLabel visualizador;
     // End of variables declaration//GEN-END:variables
 }

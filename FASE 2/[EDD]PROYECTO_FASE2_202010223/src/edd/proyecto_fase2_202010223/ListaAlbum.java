@@ -72,4 +72,18 @@ public class ListaAlbum {
             e.printStackTrace();
         }
     }
+    
+    public void eliminarimagen(int num){
+        NodoALB actual=primero;
+        while(actual!=null){
+            System.out.println(actual.album.nombre);
+            if(actual.album.imagenes.primero!=null){
+                actual.album.imagenes.mostrar();
+                actual.album.imagenes.eliminar(num);
+                System.out.println("Despues-------------------");
+                actual.album.imagenes.mostrar();
+            }
+            actual=actual.siguiente;
+        }
+    }
 }
