@@ -33,6 +33,7 @@ public class AVL {
     String estructura;
     Imagen buscada = null;
     Listaimagenes imagenes;
+    int contador;
 
     void insertar(Imagen img) {
         raiz = insertar(raiz, img);
@@ -307,5 +308,20 @@ public class AVL {
             generarlista(temp.derecha);
         }
     }
+    
+    void contarimagenes(NodoAVL temp) {
+        if (temp != null) {
+            contador++;
+            contarimagenes(temp.izquierda);
+            contarimagenes(temp.derecha);
+        }
+    }
+
+    int totalimagenes() {
+        contador = 0;
+        contarimagenes(raiz);
+        return contador;
+    }
+    
 
 }

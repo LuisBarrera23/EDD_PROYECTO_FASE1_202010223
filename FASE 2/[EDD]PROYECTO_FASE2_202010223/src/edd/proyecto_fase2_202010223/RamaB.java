@@ -14,11 +14,13 @@ public class RamaB {
     boolean hoja;
     int contador;
     NodoB primero;
+    int nivel;
 
     public RamaB() {
         this.primero = null;
         this.hoja = true;
         this.contador = 0;
+        this.nivel=0;
     }
 
     public void insertar(NodoB nuevo) {

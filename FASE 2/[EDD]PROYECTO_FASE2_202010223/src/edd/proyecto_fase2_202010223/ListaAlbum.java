@@ -86,4 +86,17 @@ public class ListaAlbum {
             actual=actual.siguiente;
         }
     }
+    
+    public String tabladatos(){
+        String tabla="";
+        NodoALB actual=primero;
+        while(actual!=null){
+            tabla+="<tr>\n";
+            tabla+="<td>"+actual.album.nombre+"</td>\n";
+            tabla+="<td>"+actual.album.imagenes.listar()+"</td>\n";
+            tabla+="</tr>\n";
+            actual=actual.siguiente;
+        }
+        return tabla;
+    }
 }

@@ -31,6 +31,7 @@ public class Administrador extends javax.swing.JFrame {
      */
     public Administrador() {
         initComponents();
+        actualizar();
     }
 
     /**
@@ -48,6 +49,12 @@ public class Administrador extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         visualizador = new javax.swing.JLabel();
         b3 = new javax.swing.JButton();
+        Comboclientes = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +77,7 @@ public class Administrador extends javax.swing.JFrame {
         });
 
         visualizador.setBackground(new java.awt.Color(255, 255, 255));
+        visualizador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         visualizador.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         visualizador.setOpaque(true);
         jScrollPane1.setViewportView(visualizador);
@@ -82,21 +90,69 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
+        Comboclientes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton1.setText("Registrar Cliente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton2.setText("Modificar cliente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton3.setText("Mostrar datos (reporte)");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton4.setText("Eliminar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton5.setText("Mostrar Clientes por niveles");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(b1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(b3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Comboclientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1194, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(b1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(b3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1199, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(b2)))
                 .addContainerGap())
         );
@@ -106,13 +162,26 @@ public class Administrador extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(b2)
+                            .addComponent(jButton1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(b1)
                         .addGap(18, 18, 18)
                         .addComponent(b3)
-                        .addGap(0, 715, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(b2)
+                        .addGap(18, 18, 18)
+                        .addComponent(Comboclientes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)
+                        .addGap(224, 224, 224)
+                        .addComponent(jButton5)
+                        .addGap(0, 276, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -145,7 +214,6 @@ public class Administrador extends javax.swing.JFrame {
 
     private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
         // TODO add your handling code here:
-        
         try{
             String dot=EDDPROYECTO_FASE2_202010223.clientes2.graficar();
             FileWriter f=new FileWriter("grafico.dot");
@@ -166,6 +234,132 @@ public class Administrador extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_b3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        RegistroA r=new RegistroA();
+        r.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try{
+            long dpi=Long.parseLong(Comboclientes.getSelectedItem().toString());
+            modificarA m=new modificarA(EDDPROYECTO_FASE2_202010223.clientes2.buscarcliente(dpi));
+            m.setVisible(true);
+            this.dispose();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        try{
+            long dpi=Long.parseLong(Comboclientes.getSelectedItem().toString());
+            Cliente cli=EDDPROYECTO_FASE2_202010223.clientes2.buscarcliente(dpi);
+            String dot="digraph G{\nnode [shape=plaintext ];\nlabel=\"Reporte datos de usuario\";\n";
+            String nodos1="";
+            nodos1+="Nodounico[ label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n";
+
+            nodos1+="<tr>\n"
+                    + "<td>Nombre</td>\n"
+                    +"<td>DPI</td>\n"
+                    +"<td>Contraseña</td>\n"
+                    +"<td>Imagenes Totales</td>\n"
+                    +"<td>Capas totales</td>\n"
+                    + "</tr>\n";
+            nodos1+="<tr>\n"
+                    + "<td>"+cli.getNombre()+"</td>\n"
+                    + "<td>"+String.valueOf(cli.getDpi())+"</td>\n"
+                    + "<td>"+String.valueOf(cli.getPassword())+"</td>\n"
+                    +"<td>"+String.valueOf(cli.imagenes.totalimagenes())+"</td>\n"
+                    +"<td>"+String.valueOf(cli.capas.totalcapas())+"</td>\n"
+                    + "</tr>\n";
+            nodos1+="</table>>];\n";
+            
+            nodos1+="Nodounico2[ label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n";
+
+            nodos1+="<tr>\n"
+                    + "<td>Nombre del Album</td>\n"
+                    +"<td>Imagenes que contiene el album</td>\n"
+                    + "</tr>\n";
+            
+            
+            nodos1+=cli.Albunes.tabladatos();
+            nodos1+="</table>>];\n";
+            dot+=nodos1+"\n}";
+            //System.out.println(dot);
+            FileWriter f=new FileWriter("grafico.dot");
+            BufferedWriter bufer=new BufferedWriter(f);
+            bufer.write(dot);
+            bufer.close();
+            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","grafico.dot","-o","reporte.png");
+            p.redirectErrorStream(true);
+            p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(1);
+            File archivo = new File("reporte.png");
+            BufferedImage buffer = ImageIO.read(archivo);
+            ImageIcon imagen = new ImageIcon(buffer);
+            Icon icono = new ImageIcon(imagen.getImage());
+            visualizador.setIcon(null);
+            visualizador.setIcon(icono);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        try{
+            long dpi=Long.parseLong(Comboclientes.getSelectedItem().toString());
+            EDDPROYECTO_FASE2_202010223.clientes2.eliminar(dpi);
+            actualizar();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        try{
+            EDDPROYECTO_FASE2_202010223.clientes2.actualizarniveles();
+            String dot="digraph G{\nnode [shape=plaintext ];\nlabel=\"Reporte clientes en cada nivel\";\n";
+            String nodos1="";
+            nodos1+="Nodounico[ label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n";
+
+            nodos1+="<tr>\n"
+                    + "<td>Nombre</td>\n"
+                    +"<td>DPI</td>\n"
+                    +"<td>Nivel al que pertenece </td>\n"
+                    +"<td>cantidad de imagenes</td>\n"
+                    + "</tr>\n";
+            nodos1+=EDDPROYECTO_FASE2_202010223.clientes2.tablaniveles();
+            nodos1+="</table>>];\n";
+            
+            
+            dot+=nodos1+"\n}";
+            //System.out.println(dot);
+            FileWriter f=new FileWriter("grafico.dot");
+            BufferedWriter bufer=new BufferedWriter(f);
+            bufer.write(dot);
+            bufer.close();
+            ProcessBuilder p=new ProcessBuilder("dot","-Tpng","grafico.dot","-o","reporte.png");
+            p.redirectErrorStream(true);
+            p.start();
+            java.util.concurrent.TimeUnit.SECONDS.sleep(1);
+            File archivo = new File("reporte.png");
+            BufferedImage buffer = ImageIO.read(archivo);
+            ImageIcon imagen = new ImageIcon(buffer);
+            Icon icono = new ImageIcon(imagen.getImage());
+            visualizador.setIcon(null);
+            visualizador.setIcon(icono);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,6 +427,7 @@ public class Administrador extends javax.swing.JFrame {
                     EDDPROYECTO_FASE2_202010223.clientes2.insertar(nuevo);
                 }
                 //EDDPROYECTO_FASE2_202010223.clientes2.recorrer(EDDPROYECTO_FASE2_202010223.clientes2.raiz);
+                actualizar();
                 
                 
                 
@@ -243,11 +438,22 @@ public class Administrador extends javax.swing.JFrame {
         }
 
     }
+    
+    public void actualizar(){
+        Comboclientes.removeAllItems();
+        EDDPROYECTO_FASE2_202010223.clientes2.recorrer3(EDDPROYECTO_FASE2_202010223.clientes2.raiz, this);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> Comboclientes;
     private javax.swing.JButton b1;
     private javax.swing.JButton b2;
     private javax.swing.JButton b3;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel visualizador;

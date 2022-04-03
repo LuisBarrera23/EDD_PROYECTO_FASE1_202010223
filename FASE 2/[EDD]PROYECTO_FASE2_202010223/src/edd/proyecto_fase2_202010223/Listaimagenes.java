@@ -30,6 +30,16 @@ public class Listaimagenes {
         System.out.println(" ");
     }
     
+    public String listar(){
+        NodoImg actual=primero;
+        String lista="";
+        while(actual!=null){
+            lista+=actual.imagen.numero+" ";
+            actual=actual.siguiente;
+        }
+        return lista;
+    }
+    
     public void eliminar(int numero){
         //mostrar();
         NodoImg actual=this.primero;

@@ -17,6 +17,7 @@ public class ArbolB {
     String clave;
     String nodos;
     String estructura;
+    ArbolB clon;
     
     public ArbolB(){
         this.raiz=null;
@@ -223,4 +224,206 @@ public class ArbolB {
             }
         }
     }
+    
+    public void recorrer3(RamaB temp,Administrador a){
+        if(temp!=null){
+            recorrer3(temp.primero,a);
+        }
+    }
+    
+    public void recorrer3(NodoB temp,Administrador a){
+        NodoB actual=temp;
+        while(actual!=null){
+            a.Comboclientes.addItem(String.valueOf(actual.cliente.getDpi()));
+            actual=actual.siguiente;
+        }
+        System.out.println(" ");
+        actual=temp;
+        while(actual!=null){
+            verificar3(actual,a);
+            actual=actual.siguiente;
+        }
+    }
+    
+    public void verificar3(NodoB temp,Administrador a){
+        if(temp!=null){
+            if(temp.izquierda!=null){
+                recorrer3(temp.izquierda,a);
+            }
+            if(temp.siguiente==null){
+                recorrer3(temp.derecha,a);
+            }
+        }
+    }
+    
+    public Cliente buscarcliente(long dpi){
+        id=dpi;
+        logueado=null;
+        recorrer4(raiz);
+        return logueado;
+    }
+    
+    public void recorrer4(RamaB temp){
+        if(temp!=null){
+            recorrer4(temp.primero);
+        }
+    }
+    
+    public void recorrer4(NodoB temp){
+        NodoB actual=temp;
+        while(actual!=null){
+            //System.out.print(actual.cliente.getDpi()+" ");
+            if(actual.cliente.getDpi()==id){
+                logueado=actual.cliente;
+            }
+            actual=actual.siguiente;
+        }
+        System.out.println(" ");
+        actual=temp;
+        while(actual!=null){
+            verificar4(actual);
+            actual=actual.siguiente;
+        }
+    }
+    
+    public void verificar4(NodoB temp){
+        if(temp!=null){
+            if(temp.izquierda!=null){
+                recorrer4(temp.izquierda);
+            }
+            if(temp.siguiente==null){
+                recorrer4(temp.derecha);
+            }
+        }
+    }
+    
+    
+    public void eliminar(long dpi){
+        clon=new ArbolB();
+        id=dpi;
+        recorrer5(raiz);
+        raiz=clon.raiz;
+    }
+    
+    public void recorrer5(RamaB temp){
+        if(temp!=null){
+            recorrer5(temp.primero);
+        }
+    }
+    
+    public void recorrer5(NodoB temp){
+        NodoB actual=temp;
+        while(actual!=null){
+            //System.out.print(actual.cliente.getDpi()+" ");
+            if(actual.cliente.getDpi()!=id){
+                clon.insertar(actual.cliente);
+            }
+            actual=actual.siguiente;
+        }
+        System.out.println(" ");
+        actual=temp;
+        while(actual!=null){
+            verificar5(actual);
+            actual=actual.siguiente;
+        }
+    }
+    
+    public void verificar5(NodoB temp){
+        if(temp!=null){
+            if(temp.izquierda!=null){
+                recorrer5(temp.izquierda);
+            }
+            if(temp.siguiente==null){
+                recorrer5(temp.derecha);
+            }
+        }
+    }
+    
+    public void actualizarniveles(){
+        int iterador=0;
+        recorrer6(raiz,iterador);
+    }
+    
+    public void recorrer6(RamaB temp,int c) {
+        if (temp != null) {
+            temp.nivel=c;
+            recorrer6(temp.primero,temp,c);
+        }
+    }
+
+    public void recorrer6(NodoB temp,RamaB rama,int c) {
+        NodoB actual = temp;
+        System.out.print("");
+        while (actual != null) {
+            System.out.print(actual.cliente.getDpi()+ " ");
+            actual = actual.siguiente;
+        }
+        System.out.println(" ");
+        actual = temp;
+        while (actual != null) {
+            verificar6(actual,c);
+            actual = actual.siguiente;
+        }
+
+    }
+
+    public void verificar6(NodoB temp,int c) {
+        if (temp != null) {
+            if (temp.izquierda != null) {
+                //System.out.println("\nverificando izquierda de "+temp.id);
+                recorrer6(temp.izquierda,c+1);
+            }
+            if (temp.siguiente == null) {
+                //System.out.println("\nverificando derecha de "+temp.id);
+                recorrer6(temp.derecha,c+1);
+            }
+        }
+    }
+    
+    public String tablaniveles(){
+        estructura="";
+        recorrer7(raiz);
+        return estructura;
+    }
+    
+    public void recorrer7(RamaB temp) {
+        if (temp != null) {
+            recorrer7(temp.primero,temp.nivel);
+        }
+    }
+
+    public void recorrer7(NodoB temp, int nivel) {
+        NodoB actual = temp;
+        while (actual != null) {
+            estructura+="<tr>\n";
+            estructura+="<td>"+actual.cliente.getNombre()+"</td>\n";
+            estructura+="<td>"+actual.cliente.getDpi()+"</td>\n";
+            estructura+="<td>"+nivel+"</td>\n";
+            estructura+="<td>"+actual.cliente.imagenes.totalimagenes()+"</td>\n";
+            estructura+="</tr>\n";
+            System.out.print(actual.cliente.getDpi() + " ");
+            actual = actual.siguiente;
+        }
+        System.out.println(" ");
+        actual = temp;
+        while (actual != null) {
+            verificar7(actual);
+            actual = actual.siguiente;
+        }
+
+    }
+
+    public void verificar7(NodoB temp) {
+        if (temp != null) {
+            if (temp.izquierda != null) {
+                //System.out.println("\nverificando izquierda de "+temp.id);
+                recorrer7(temp.izquierda);
+            }
+            if (temp.siguiente == null) {
+                //System.out.println("\nverificando derecha de "+temp.id);
+                recorrer7(temp.derecha);
+            }
+        }
+    }
+    
 }
